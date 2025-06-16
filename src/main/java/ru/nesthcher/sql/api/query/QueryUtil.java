@@ -8,7 +8,7 @@ import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
 import lombok.experimental.UtilityClass;
-import ru.nesthcher.sql.util.Pair;
+import ru.nesthcher.utils.container.Pair;
 
 /**
  * Класс `QueryUtil` предоставляет утилитарные методы для работы с SQL запросами.

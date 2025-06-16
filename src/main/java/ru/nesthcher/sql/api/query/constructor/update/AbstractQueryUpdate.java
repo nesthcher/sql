@@ -10,7 +10,7 @@ import ru.nesthcher.sql.api.query.QuerySymbol;
 import ru.nesthcher.sql.api.query.constructor.Query;
 import ru.nesthcher.sql.api.query.constructor.where.AbstractQueryWhere;
 import ru.nesthcher.sql.api.query.constructor.where.QueryWhere;
-import ru.nesthcher.sql.util.Pair;
+import ru.nesthcher.utils.container.Pair;
 
 /**
  * Абстрактный класс `AbstractQueryUpdate` представляет собой конструктор SQL запроса для обновления данных в таблице.

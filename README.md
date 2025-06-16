@@ -196,6 +196,11 @@ public final class NewQuery extends BaseQuery {
     <artifactId>HikariCP</artifactId>
     <version>5.0.1</version>
 </dependency>
+<dependency>
+    <groupId>ru.nesthcher</groupId>
+    <artifactId>utils</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
 
 ## Лицензия

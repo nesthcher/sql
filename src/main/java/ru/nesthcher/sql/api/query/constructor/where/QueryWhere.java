@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import lombok.Getter;
 import ru.nesthcher.sql.api.query.QuerySymbol;
 import ru.nesthcher.sql.api.query.QueryUtil;
-import ru.nesthcher.sql.util.Pair;
+import ru.nesthcher.utils.container.Pair;
 
 /**
  * Класс `QueryWhere` представляет собой конструктор условия WHERE в SQL запросе.

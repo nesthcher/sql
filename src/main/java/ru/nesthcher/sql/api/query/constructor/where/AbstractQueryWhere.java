@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 import ru.nesthcher.sql.api.query.QuerySymbol;
-import ru.nesthcher.sql.util.Pair;
+import ru.nesthcher.utils.container.Pair;
 
 /**
  * Интерфейс `AbstractQueryWhere` определяет методы для конструирования условия WHERE в SQL запросе.

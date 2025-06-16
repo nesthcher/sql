@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import lombok.Getter;
 import ru.nesthcher.sql.api.query.constructor.Query;
-import ru.nesthcher.sql.util.Pair;
+import ru.nesthcher.utils.container.Pair;
 
 /**
  * Абстрактный класс `AbstractQueryInsert` представляет собой конструктор SQL запроса для вставки данных в таблицу.

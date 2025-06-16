@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import ru.nesthcher.sql.api.query.QueryUtil;
 import ru.nesthcher.sql.api.query.constructor.insert.AbstractQueryInsert;
-import ru.nesthcher.sql.util.Pair;
+import ru.nesthcher.utils.container.Pair;
 
 /**
  * Класс `SQLiteQueryInsert` представляет собой конструктор SQL запроса для вставки данных в таблицу SQLite.

@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import ru.nesthcher.sql.api.query.QueryUtil;
 import ru.nesthcher.sql.api.query.constructor.update.AbstractQueryUpdate;
-import ru.nesthcher.sql.util.Pair;
+import ru.nesthcher.utils.container.Pair;
 
 /**
  * Класс `MySQLQueryUpdate` представляет собой конструктор SQL запроса для обновления данных в таблице MySQL.

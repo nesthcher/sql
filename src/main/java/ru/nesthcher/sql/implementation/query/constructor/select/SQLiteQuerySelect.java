@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 import ru.nesthcher.sql.api.query.constructor.select.AbstractQuerySelect;
-import ru.nesthcher.sql.util.Pair;
+import ru.nesthcher.utils.container.Pair;
 
 /**
  * Класс `SQLiteQuerySelect` представляет собой конструктор SQL запроса для выборки данных из таблицы SQLite.
