@@ -30,7 +30,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
     /**
      * Флаг, указывающий, является ли колонка уникальной.
      */
-    protected boolean unigue;
+    protected boolean unique;
     /**
      * Флаг, указывающий, является ли колонка автоинкрементной.
      */
@@ -95,14 +95,14 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
 
     /**
      * Устанавливает флаг, указывающий, является ли колонка уникальной.
-     * @param unigue Значение флага.
+     * @param unique Значение флага.
      * @return Текущий объект `BaseTableColumn`.
      */
     @Override
-    public BaseTableColumn unigue(
-            final boolean unigue
+    public BaseTableColumn unique(
+            final boolean unique
     ) {
-        this.unigue = unigue;
+        this.unique = unique;
         return this;
     }
 

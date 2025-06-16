@@ -29,7 +29,7 @@ public final class SQLiteTableColumn extends BaseTableColumn {
     @Override
     public @NotNull String toString() {
         return "`" + this.name + "` " + this.columnType.getSql() + (this.nullValue || this.autoIncrement ? "" : " NOT NULL") + (!this.primaryKey ? "" : " PRIMARY KEY")
-                + (!this.unigue ? "" : " UNIQUE") + (this.defaultValue == null ? "" : " DEFAULT "
+                + (!this.unique ? "" : " UNIQUE") + (this.defaultValue == null ? "" : " DEFAULT "
                 + this.getDefaultValueString()) + (!this.autoIncrement ? "" : " AUTOINCREMENT");
     }
 }

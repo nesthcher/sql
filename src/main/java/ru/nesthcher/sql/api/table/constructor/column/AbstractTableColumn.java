@@ -53,13 +53,13 @@ public interface AbstractTableColumn {
      * Возвращает флаг, указывающий, является ли колонка уникальной.
      * @return `true`, если колонка является уникальной, иначе `false`.
      */
-    boolean isUnigue();
+    boolean isUnique();
     /**
      * Устанавливает флаг, указывающий, является ли колонка уникальной.
-     * @param unigue Значение флага.
+     * @param unique Значение флага.
      * @return Текущий объект `AbstractTableColumn`.
      */
-    AbstractTableColumn unigue(final boolean unigue);
+    AbstractTableColumn unique(final boolean unique);
     /**
      * Возвращает флаг, указывающий, является ли колонка автоинкрементной.
      * @return `true`, если колонка является автоинкрементной, иначе `false`.
