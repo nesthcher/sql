@@ -1,15 +1,25 @@
 package ru.nesthcher.sql.implementation.table.constructor;
 
+import java.util.stream.Collectors;
+
 import org.jetbrains.annotations.NotNull;
+
 import ru.nesthcher.sql.api.AbstractDatabase;
 import ru.nesthcher.sql.api.table.constructor.BaseTableConstructor;
 import ru.nesthcher.sql.api.table.constructor.column.AbstractTableColumn;
 import ru.nesthcher.sql.api.table.constructor.column.ColumnType;
 import ru.nesthcher.sql.implementation.table.constructor.column.MySQLTableColumn;
 
-import java.util.stream.Collectors;
-
+/**
+ * Класс `MySQLTableConstructor` реализует конструктор таблиц для MySQL базы данных.
+ * Позволяет создавать таблицы с заданными колонками, первичными ключами и индексами.
+ */
 public final class MySQLTableConstructor extends BaseTableConstructor {
+    /**
+     * Конструктор класса `MySQLTableConstructor`.
+     * @param database Абстрактная база данных, с которой будет работать конструктор.
+     * @param name Название создаваемой таблицы.
+     */
     public MySQLTableConstructor(
             @NotNull final AbstractDatabase database,
             @NotNull final String name
@@ -17,6 +27,12 @@ public final class MySQLTableConstructor extends BaseTableConstructor {
         super(database, name);
     }
 
+    /**
+     * Создает новую колонку таблицы.
+     * @param name Название колонки.
+     * @param columnType Тип колонки.
+     * @return Объект `MySQLTableColumn`, представляющий колонку таблицы.
+     */
     @Override
     public AbstractTableColumn newColumn(
             @NotNull final String name,
@@ -25,6 +41,10 @@ public final class MySQLTableConstructor extends BaseTableConstructor {
         return new MySQLTableColumn(name, columnType);
     }
 
+    /**
+     * Преобразует конструктор таблицы в SQL запрос для создания таблицы.
+     * @return SQL запрос для создания таблицы.
+     */
     @Override
     public @NotNull String toString() {
         String columnSql = tableColumns.values().stream()
@@ -42,6 +62,10 @@ public final class MySQLTableConstructor extends BaseTableConstructor {
         return "CREATE TABLE IF NOT EXISTS `" + name + "` (" + columnSql + ");";
     }
 
+    /**
+     * Создает таблицу в базе данных.
+     * Выполняет SQL запрос для создания таблицы и добавления индексов.
+     */
     @Override
     public void create() {
         database.execute(this.toString());

@@ -1,19 +1,32 @@
 package ru.nesthcher.sql.implementation.query.constructor.update;
 
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
+
 import ru.nesthcher.sql.api.query.QueryUtil;
 import ru.nesthcher.sql.api.query.constructor.update.AbstractQueryUpdate;
 import ru.nesthcher.sql.util.Pair;
 
-import java.util.List;
-
+/**
+ * Класс `SQLiteQueryUpdate` представляет собой конструктор SQL запроса для обновления данных в таблице SQLite.
+ * Расширяет `AbstractQueryUpdate` и предоставляет реализацию метода `toString` для формирования SQL запроса.
+ */
 public final class SQLiteQueryUpdate extends AbstractQueryUpdate {
+    /**
+     * Конструктор класса `SQLiteQueryUpdate`.
+     * @param table Название таблицы, которую необходимо обновить.
+     */
     public SQLiteQueryUpdate(
             @NotNull final String table
     ) {
         super(table);
     }
 
+    /**
+     * Формирует SQL запрос для обновления данных в таблице.
+     * @return SQL запрос для обновления данных.
+     */
     @Override
     public String toString() {
         final Pair<String, List<Object>> whereConvertEntries = where.getConvertEntries();

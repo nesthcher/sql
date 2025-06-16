@@ -1,20 +1,33 @@
 package ru.nesthcher.sql.implementation.query.constructor.insert;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.jetbrains.annotations.NotNull;
+
 import ru.nesthcher.sql.api.query.QueryUtil;
 import ru.nesthcher.sql.api.query.constructor.insert.AbstractQueryInsert;
 import ru.nesthcher.sql.util.Pair;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+/**
+ * Класс `SQLiteQueryInsert` представляет собой конструктор SQL запроса для вставки данных в таблицу SQLite.
+ * Расширяет `AbstractQueryInsert` и предоставляет реализацию метода `toString` для формирования SQL запроса.
+ */
 public final class SQLiteQueryInsert extends AbstractQueryInsert {
+    /**
+     * Конструктор класса `SQLiteQueryInsert`.
+     * @param table Название таблицы, в которую необходимо вставить данные.
+     */
     public SQLiteQueryInsert(
             @NotNull final String table
     ) {
         super(table);
     }
 
+    /**
+     * Формирует SQL запрос для вставки данных в таблицу.
+     * @return SQL запрос для вставки данных.
+     */
     @Override
     public String toString() {
         final String columns = entries.keySet().stream().map(s -> "`" + s + "`")

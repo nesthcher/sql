@@ -1,14 +1,15 @@
 package ru.nesthcher.sql.api.table.constructor;
 
-import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
-import ru.nesthcher.sql.api.AbstractDatabase;
-import ru.nesthcher.sql.api.table.constructor.column.AbstractTableColumn;
-import ru.nesthcher.sql.api.table.constructor.column.ColumnType;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import org.jetbrains.annotations.NotNull;
+
+import lombok.Getter;
+import ru.nesthcher.sql.api.AbstractDatabase;
+import ru.nesthcher.sql.api.table.constructor.column.AbstractTableColumn;
+import ru.nesthcher.sql.api.table.constructor.column.ColumnType;
 
 public abstract class BaseTableConstructor implements AbstractTableConstructor {
     @Getter
@@ -47,7 +48,7 @@ public abstract class BaseTableConstructor implements AbstractTableConstructor {
     @Override
     public final void addIndex(
             @NotNull final String column
-    ) { //todo проверить
+    ) {
         this.columns.add(column);
     }
 

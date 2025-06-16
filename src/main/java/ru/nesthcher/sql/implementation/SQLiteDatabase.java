@@ -1,15 +1,27 @@
 package ru.nesthcher.sql.implementation;
 
-import com.zaxxer.hikari.HikariDataSource;
 import org.jetbrains.annotations.NotNull;
+
+import com.zaxxer.hikari.HikariDataSource;
+
 import ru.nesthcher.sql.api.query.AbstractQuery;
-import ru.nesthcher.sql.implementation.query.SQLiteQuery;
 import ru.nesthcher.sql.api.table.AbstractTable;
+import ru.nesthcher.sql.implementation.query.SQLiteQuery;
 import ru.nesthcher.sql.implementation.table.SQLiteTable;
 
+/**
+ * Класс `SQLiteDatabase` реализует подключение к базе данных SQLite, используя HikariCP для управления пулом соединений.
+ */
 public final class SQLiteDatabase extends HikariPoolDatabase {
+    /**
+     * Путь к файлу базы данных SQLite.
+     */
     private final String path;
 
+    /**
+     * Конструктор класса `SQLiteDatabase`.
+     * @param path Путь к файлу базы данных SQLite.
+     */
     public SQLiteDatabase(
             @NotNull final String path
 	) {
@@ -17,6 +29,11 @@ public final class SQLiteDatabase extends HikariPoolDatabase {
         onConnect();
     }
 
+    /**
+     * Конфигурирует источник данных HikariCP для подключения к базе данных SQLite.
+     * @param source Исходный источник данных HikariCP.
+     * @return Сконфигурированный источник данных HikariCP.
+     */
     @Override
     protected @NotNull HikariDataSource configureDataSource(
             @NotNull final HikariDataSource source
@@ -32,12 +49,20 @@ public final class SQLiteDatabase extends HikariPoolDatabase {
         return source;
     }
 
+    /**
+     * Возвращает объект для работы с таблицами SQLite.
+     * @return Объект `SQLiteTable`.
+     */
     @Override
     public AbstractTable table() {
         if(table == null) table = new SQLiteTable(this);
         return table;
     }
 
+    /**
+     * Возвращает объект для выполнения запросов SQLite.
+     * @return Объект `SQLiteQuery`.
+     */
     @Override
     public AbstractQuery query() {
         if(query == null) query = new SQLiteQuery(this);

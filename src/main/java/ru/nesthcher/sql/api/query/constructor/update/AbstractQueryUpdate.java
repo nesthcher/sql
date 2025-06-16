@@ -12,14 +12,37 @@ import ru.nesthcher.sql.api.query.constructor.where.AbstractQueryWhere;
 import ru.nesthcher.sql.api.query.constructor.where.QueryWhere;
 import ru.nesthcher.sql.util.Pair;
 
+/**
+ * Абстрактный класс `AbstractQueryUpdate` представляет собой конструктор SQL запроса для обновления данных в таблице.
+ */
 @Getter
 public abstract class AbstractQueryUpdate implements Query {
+    /**
+     * Название таблицы, которую необходимо обновить.
+     */
     protected final String table;
+    /**
+     * Карта записей, где ключ - название колонки, значение - пара (новое значение, null).
+     */
     protected final LinkedHashMap<String, Pair<Object, Object>> entries = new LinkedHashMap<>();
+    /**
+     * Список значений для prepared statement.
+     */
     protected List<Object> preparedObjects = null;
+    /**
+     * Конструктор условия WHERE.
+     */
     protected final AbstractQueryWhere where = new QueryWhere();
+    /**
+     * Ограничение на количество обновляемых строк.
+     */
     protected int limitSize = 0;
 
+    /**
+     * Конструктор класса `AbstractQueryUpdate`.
+     * @param table Название таблицы, которую необходимо обновить.
+     * @throws IllegalArgumentException Если название таблицы пустое.
+     */
     public AbstractQueryUpdate(
             @NotNull final String table
     ) {
@@ -27,6 +50,12 @@ public abstract class AbstractQueryUpdate implements Query {
         this.table = table;
     }
 
+    /**
+     * Устанавливает новое значение для колонки.
+     * @param column Название колонки.
+     * @param value Новое значение.
+     * @return Текущий объект `AbstractQueryUpdate`.
+     */
     public AbstractQueryUpdate set(
             @NotNull final String column,
             final Object value
@@ -35,6 +64,13 @@ public abstract class AbstractQueryUpdate implements Query {
         return this;
     }
 
+    /**
+     * Добавляет условие WHERE в запрос.
+     * @param column Название колонки.
+     * @param symbol Символ сравнения.
+     * @param result Значение для сравнения.
+     * @return Текущий объект `AbstractQueryUpdate`.
+     */
     public AbstractQueryUpdate where(
             @NotNull final String column,
             @NotNull final QuerySymbol symbol,
@@ -44,10 +80,19 @@ public abstract class AbstractQueryUpdate implements Query {
         return this;
     }
 
+    /**
+     * Устанавливает ограничение на количество обновляемых строк равным 1.
+     * @return Текущий объект `AbstractQueryUpdate`.
+     */
     public AbstractQueryUpdate limit() {
         return limit(1);
     }
 
+    /**
+     * Устанавливает ограничение на количество обновляемых строк.
+     * @param limit Количество обновляемых строк.
+     * @return Текущий объект `AbstractQueryUpdate`.
+     */
     public AbstractQueryUpdate limit(
             final int limit
     ) {
@@ -57,13 +102,22 @@ public abstract class AbstractQueryUpdate implements Query {
         return this;
     }
 
+    /**
+     * Возвращает список значений для prepared statement.
+     * @return Список значений для prepared statement.
+     * @throws NullPointerException Если параметры prepared statement не указаны.
+     */
     @Override
     public List<Object> getPreparedObjects() {
-        if (preparedObjects == null)
-            throw new NullPointerException("Не указаны параметры preparedpreparedObjectsEntrys");
+        if (preparedObjects == null) throw new NullPointerException("Не указаны параметры preparedObjects");
         return preparedObjects;
     }
 
+    /**
+     * Абстрактный метод для преобразования конструктора запроса в SQL строку.
+     * Должен быть реализован в классах-наследниках.
+     * @return SQL строка, представляющая конструктор запроса.
+     */
     @Override
     public abstract String toString();
 }

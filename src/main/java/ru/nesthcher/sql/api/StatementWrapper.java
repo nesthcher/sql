@@ -1,8 +1,5 @@
 package ru.nesthcher.sql.api;
 
-import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,12 +8,34 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+import org.jetbrains.annotations.NotNull;
+
+import lombok.RequiredArgsConstructor;
+
+/**
+ * Класс `StatementWrapper` оборачивает SQL запрос и предоставляет методы для его выполнения.
+ */
 @RequiredArgsConstructor
 public class StatementWrapper {
+    /**
+     * База данных, с которой работает запрос.
+     */
     private final AbstractDatabase database;
+    /**
+     * SQL запрос.
+     */
     private String query;
+    /**
+     * Флаг, указывающий, выполняется ли запрос синхронно.
+     */
     private boolean sync = false;
 
+    /**
+     * Создает новый объект `StatementWrapper`.
+     * @param database База данных, с которой работает запрос.
+     * @param query SQL запрос.
+     * @return Объект `StatementWrapper`.
+     */
     public static StatementWrapper create(
             @NotNull final AbstractDatabase database,
             @NotNull final String query
@@ -24,6 +43,11 @@ public class StatementWrapper {
         return new StatementWrapper(database).setQuery(query);
     }
 
+    /**
+     * Устанавливает SQL запрос.
+     * @param query SQL запрос.
+     * @return Текущий объект `StatementWrapper`.
+     */
     public StatementWrapper setQuery(
             @NotNull final String query
     ) {
@@ -31,11 +55,22 @@ public class StatementWrapper {
         return this;
     }
 
+    /**
+     * Устанавливает флаг, указывающий, выполняется ли запрос синхронно.
+     * @return Текущий объект `StatementWrapper`.
+     */
     public StatementWrapper sync() {
         sync = true;
         return this;
     }
 
+    /**
+     * Создает объект `PreparedStatement` для выполнения SQL запроса.
+     * @param generatedKeys Флаг, указывающий, необходимо ли возвращать сгенерированные ключи.
+     * @param objects Параметры для prepared statement.
+     * @return Объект `PreparedStatement`.
+     * @throws SQLException Если произошла ошибка при создании `PreparedStatement`.
+     */
     private @NotNull PreparedStatement createStatement(
             final int generatedKeys,
             final Object... objects
@@ -58,10 +93,20 @@ public class StatementWrapper {
         return ps;
     }
 
+    /**
+     * Проверяет, установлен ли SQL запрос.
+     * @throws IllegalStateException Если SQL запрос не установлен.
+     */
     private void validateQuery() {
         if (query == null || query.isEmpty()) throw new IllegalStateException("Query оказался null");
     }
 
+    /**
+     * Выполняет SQL запрос.
+     * @param generatedKeys Флаг, указывающий, необходимо ли возвращать сгенерированные ключи.
+     * @param objects Параметры для prepared statement.
+     * @return Количество затронутых строк или сгенерированный ключ.
+     */
     public int execute(
             final int generatedKeys,
             final Object... objects
@@ -80,6 +125,13 @@ public class StatementWrapper {
         return handle(callable);
     }
 
+    /**
+     * Выполняет SQL запрос и обрабатывает результат с помощью `ResponseHandler`.
+     * @param handler Объект `ResponseHandler` для обработки результата запроса.
+     * @param objects Параметры для prepared statement.
+     * @param <T> Тип возвращаемого значения.
+     * @return Результат обработки запроса.
+     */
     public <T> T executeQuery(
             final ResponseHandler<ResultSet, T> handler,
             final Object... objects
@@ -98,6 +150,12 @@ public class StatementWrapper {
         return handle(callable);
     }
 
+    /**
+     * Обрабатывает выполнение SQL запроса.
+     * @param callable Объект `Callable`, выполняющий SQL запрос.
+     * @param <T> Тип возвращаемого значения.
+     * @return Результат выполнения запроса.
+     */
     private <T> T handle(
             final Callable<T> callable
     ) {

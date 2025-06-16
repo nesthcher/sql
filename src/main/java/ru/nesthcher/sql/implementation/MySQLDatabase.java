@@ -1,16 +1,47 @@
 package ru.nesthcher.sql.implementation;
 
-import com.zaxxer.hikari.HikariDataSource;
 import org.jetbrains.annotations.NotNull;
+
+import com.zaxxer.hikari.HikariDataSource;
+
 import ru.nesthcher.sql.api.query.AbstractQuery;
-import ru.nesthcher.sql.implementation.query.MySQLQuery;
 import ru.nesthcher.sql.api.table.AbstractTable;
+import ru.nesthcher.sql.implementation.query.MySQLQuery;
 import ru.nesthcher.sql.implementation.table.MySQLTable;
 
+/**
+ * Класс `MySQLDatabase` реализует подключение к базе данных MySQL, используя HikariCP для управления пулом соединений.
+ */
 public final class MySQLDatabase extends HikariPoolDatabase {
-    private final String host, password, user, data;
+    /**
+     * Хост базы данных MySQL.
+     */
+    private final String host;
+    /**
+     * Пароль для подключения к базе данных MySQL.
+     */
+    private final String password;
+    /**
+     * Имя пользователя для подключения к базе данных MySQL.
+     */
+    private final String user;
+    /**
+     * Имя базы данных MySQL.
+     */
+    private final String data;
+    /**
+     * Порт для подключения к базе данных MySQL.
+     */
     private final int port;
 
+    /**
+     * Конструктор класса `MySQLDatabase`.
+     * @param host Хост базы данных MySQL.
+     * @param user Имя пользователя для подключения к базе данных MySQL.
+     * @param password Пароль для подключения к базе данных MySQL.
+     * @param data Имя базы данных MySQL.
+     * @param port Порт для подключения к базе данных MySQL.
+     */
     public MySQLDatabase(
             @NotNull final String host,
             @NotNull final String user,
@@ -26,6 +57,11 @@ public final class MySQLDatabase extends HikariPoolDatabase {
         onConnect();
     }
 
+    /**
+     * Конфигурирует источник данных HikariCP для подключения к базе данных MySQL.
+     * @param source Исходный источник данных HikariCP.
+     * @return Сконфигурированный источник данных HikariCP.
+     */
     @Override
     protected @NotNull HikariDataSource configureDataSource(
             @NotNull final HikariDataSource source
@@ -44,12 +80,20 @@ public final class MySQLDatabase extends HikariPoolDatabase {
         return source;
     }
 
+    /**
+     * Возвращает объект для работы с таблицами MySQL.
+     * @return Объект `MySQLTable`.
+     */
     @Override
     public AbstractTable table() {
         if(table == null) table = new MySQLTable(this);
         return table;
     }
 
+    /**
+     * Возвращает объект для выполнения запросов MySQL.
+     * @return Объект `MySQLQuery`.
+     */
     @Override
     public AbstractQuery query() {
         if(query == null) query = new MySQLQuery(this);

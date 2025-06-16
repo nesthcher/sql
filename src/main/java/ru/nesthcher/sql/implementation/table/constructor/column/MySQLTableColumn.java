@@ -1,10 +1,20 @@
 package ru.nesthcher.sql.implementation.table.constructor.column;
 
 import org.jetbrains.annotations.NotNull;
+
 import ru.nesthcher.sql.api.table.constructor.column.BaseTableColumn;
 import ru.nesthcher.sql.api.table.constructor.column.ColumnType;
 
+/**
+ * Класс `MySQLTableColumn` представляет колонку таблицы для MySQL базы данных.
+ * Расширяет `BaseTableColumn` и предоставляет специфичную для MySQL реализацию метода `toString`.
+ */
 public final class MySQLTableColumn extends BaseTableColumn {
+    /**
+     * Конструктор класса `MySQLTableColumn`.
+     * @param name Название колонки.
+     * @param columnType Тип колонки.
+     */
     public MySQLTableColumn(
             @NotNull final String name,
             @NotNull final ColumnType columnType
@@ -12,6 +22,10 @@ public final class MySQLTableColumn extends BaseTableColumn {
         super(name, columnType);
     }
 
+    /**
+     * Преобразует колонку таблицы в SQL строку для создания колонки в MySQL.
+     * @return SQL строка, представляющая колонку таблицы.
+     */
     @Override
     public @NotNull String toString() {
         return "`" + this.name + "` " + this.columnType.getSql() + (this.nullValue ? "" : " NOT NULL")
