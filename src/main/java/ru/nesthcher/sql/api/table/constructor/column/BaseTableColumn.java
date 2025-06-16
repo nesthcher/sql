@@ -1,7 +1,8 @@
 package ru.nesthcher.sql.api.table.constructor.column;
 
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+
+import lombok.Getter;
 
 @Getter
 public abstract class BaseTableColumn implements AbstractTableColumn {
@@ -23,6 +24,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
         this.columnType = columnType;
     }
 
+    @Override
     public BaseTableColumn setNull(
             final boolean nullValue
     ) {
@@ -30,6 +32,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
         return this;
     }
 
+    @Override
     public BaseTableColumn setDefaultValue(
             final Object defaultValue
     ) {
@@ -37,6 +40,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
         return this;
     }
 
+    @Override
     public BaseTableColumn primaryKey(
             final boolean primaryKey
     ) {
@@ -44,6 +48,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
         return this;
     }
 
+    @Override
     public BaseTableColumn unigue(
             final boolean unigue
     ) {
@@ -51,6 +56,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
         return this;
     }
 
+    @Override
     public BaseTableColumn autoIncrement(
             final boolean autoIncrement
     ) {

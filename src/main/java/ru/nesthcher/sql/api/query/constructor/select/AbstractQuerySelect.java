@@ -1,13 +1,14 @@
 package ru.nesthcher.sql.api.query.constructor.select;
 
-import lombok.Getter;
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
+
+import lombok.Getter;
 import ru.nesthcher.sql.api.query.QuerySymbol;
 import ru.nesthcher.sql.api.query.constructor.Query;
 import ru.nesthcher.sql.api.query.constructor.where.AbstractQueryWhere;
 import ru.nesthcher.sql.api.query.constructor.where.QueryWhere;
-
-import java.util.List;
 
 @Getter
 public abstract class AbstractQuerySelect implements Query {
@@ -20,6 +21,7 @@ public abstract class AbstractQuerySelect implements Query {
     public AbstractQuerySelect(
             @NotNull final String table
     ) {
+        if (table.isEmpty()) throw new IllegalArgumentException("Название таблицы не может быть пустым");
         this.table = table;
     }
 
@@ -53,7 +55,7 @@ public abstract class AbstractQuerySelect implements Query {
 
     @Override
     public List<Object> getPreparedObjects() {
-        if (preparedObjects == null) throw new NullPointerException("не указаны параметры preparedObjects");
+        if (preparedObjects == null) throw new NullPointerException("Не указаны параметры preparedObjects");
         return preparedObjects;
     }
 

@@ -1,12 +1,13 @@
 package ru.nesthcher.sql.api.query.constructor.insert;
 
-import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
-import ru.nesthcher.sql.api.query.constructor.Query;
-import ru.nesthcher.sql.util.Pair;
-
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import org.jetbrains.annotations.NotNull;
+
+import lombok.Getter;
+import ru.nesthcher.sql.api.query.constructor.Query;
+import ru.nesthcher.sql.util.Pair;
 
 @Getter
 public abstract class AbstractQueryInsert implements Query {
@@ -17,6 +18,7 @@ public abstract class AbstractQueryInsert implements Query {
     public AbstractQueryInsert(
             @NotNull final String table
     ) {
+        if (table.isEmpty()) throw new IllegalArgumentException("Название таблицы не может быть пустым");
         this.table = table;
     }
 
@@ -30,7 +32,7 @@ public abstract class AbstractQueryInsert implements Query {
 
     @Override
     public List<Object> getPreparedObjects() {
-        if (preparedObjects == null) throw new NullPointerException("не указаны параметры preparedObjects");
+        if (preparedObjects == null) throw new NullPointerException("Не указаны параметры preparedObjects");
         return preparedObjects;
     }
 

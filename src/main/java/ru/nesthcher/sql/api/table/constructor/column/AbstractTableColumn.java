@@ -15,5 +15,5 @@ public interface AbstractTableColumn {
     AbstractTableColumn unigue(final boolean unigue);
     boolean isAutoIncrement();
     AbstractTableColumn autoIncrement(final boolean autoIncrement);
-    @NotNull String toString();
+    @Override @NotNull String toString();
 }
