@@ -53,10 +53,10 @@ AbstractDatabase database = new MySQLDatabase(
 ```java
 AbstractTableConstructor constructor = database.table().constructor("users");
 
-constructor.newColumn("id", ColumnType.INT).primaryKey(true).autoIncrement(true);
-constructor.newColumn("username", ColumnType.VARCHAR_32).setNull(false);
-constructor.newColumn("email", ColumnType.VARCHAR_64).setNull(false).unique(true);
-constructor.newColumn("created_at", ColumnType.TIMESTAMP).setDefaultValue("CURRENT_TIMESTAMP");
+constructor.addColumn(constructor.newColumn("id", ColumnType.INT).primaryKey(true).autoIncrement(true));
+constructor.addColumn(constructor.newColumn("username", ColumnType.VARCHAR_32).setNull(false));
+constructor.addColumn(constructor.newColumn("email", ColumnType.VARCHAR_64).setNull(false).unique(true));
+constructor.addColumn(constructor.newColumn("created_at", ColumnType.TIMESTAMP).setDefaultValue("CURRENT_TIMESTAMP"));
 
 constructor.create();
 ```
