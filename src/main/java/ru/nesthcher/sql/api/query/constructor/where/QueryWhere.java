@@ -1,7 +1,7 @@
 package ru.nesthcher.sql.api.query.constructor.where;
 
 import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,7 +42,7 @@ public class QueryWhere implements AbstractQueryWhere {
      * @return Пара (SQL строка, список значений для prepared statement).
      */
     @Override
-    public Pair<String, List<Object>> getConvertEntries() {
+    public Pair<String, ArrayList<Object>> getConvertEntries() {
         return QueryUtil.convertEntries(entries, true);
     }
 }

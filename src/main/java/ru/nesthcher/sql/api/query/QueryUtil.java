@@ -2,7 +2,6 @@ package ru.nesthcher.sql.api.query;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.jetbrains.annotations.NotNull;
@@ -22,13 +21,13 @@ public class QueryUtil {
      * @return Пара (SQL строка, список значений для prepared statement).
      * @throws IllegalArgumentException Если карта записей пуста.
      */
-    public @NotNull Pair<String, List<Object>> convertEntries(
+    public @NotNull Pair<String, ArrayList<Object>> convertEntries(
             @NotNull final LinkedHashMap<String, Pair<Object, Object>> entrys,
             final boolean isWhere
     ) {
         if (entrys.isEmpty()) throw new IllegalArgumentException("Entries не может быть пустым.");
         final StringBuilder sb = new StringBuilder();
-        final List<Object> values = new ArrayList<>();
+        final ArrayList<Object> values = new ArrayList<>();
         int size = 0;
         String column;
         for (final Map.Entry<String, Pair<Object, Object>> entry : entrys.entrySet()) {

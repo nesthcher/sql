@@ -1,6 +1,6 @@
 package ru.nesthcher.sql.implementation.query.constructor.delete;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,7 +28,7 @@ public final class MySQLQueryDelete extends AbstractQueryDelete {
      */
     @Override
     public String toString() {
-        final Pair<String, List<Object>> convertEntries = where.getConvertEntries();
+        final Pair<String, ArrayList<Object>> convertEntries = where.getConvertEntries();
         preparedObjects = convertEntries.getSecond();
         return "DELETE FROM `" + table + "` WHERE " + convertEntries.getFirst()
                 + (limitSize != 0 ? " LIMIT " + limitSize : "") + ";";

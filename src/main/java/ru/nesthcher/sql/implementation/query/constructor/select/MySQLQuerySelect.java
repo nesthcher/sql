@@ -1,6 +1,6 @@
 package ru.nesthcher.sql.implementation.query.constructor.select;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,7 +28,7 @@ public final class MySQLQuerySelect extends AbstractQuerySelect {
      */
     @Override
     public String toString() {
-        final Pair<String, List<Object>> convertEntries = where.getConvertEntries();
+        final Pair<String, ArrayList<Object>> convertEntries = where.getConvertEntries();
         preparedObjects = convertEntries.getSecond();
         return "SELECT " + (result == null ? "*" : "`" + result + "`") + " FROM `" + table
                 + "` WHERE " + convertEntries.getFirst() + (limitSize != 0 ? " LIMIT " + limitSize : "") + ";";

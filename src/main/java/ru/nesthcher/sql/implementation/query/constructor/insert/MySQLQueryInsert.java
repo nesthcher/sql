@@ -1,6 +1,6 @@
 package ru.nesthcher.sql.implementation.query.constructor.insert;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +35,7 @@ public final class MySQLQueryInsert extends AbstractQueryInsert {
         final String values = entries.keySet().stream().map(s -> "?")
                 .collect(Collectors.joining(", "));
 
-        final Pair<String, List<Object>> convertEntries = QueryUtil.convertEntries(entries, false);
+        final Pair<String, ArrayList<Object>> convertEntries = QueryUtil.convertEntries(entries, false);
         preparedObjects = convertEntries.getSecond();
 
         return "INSERT INTO `" + table + "` (" + columns + ") VALUES (" + values + ");";

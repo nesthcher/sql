@@ -1,7 +1,7 @@
 package ru.nesthcher.sql.api.query.constructor.insert;
 
 import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -25,7 +25,7 @@ public abstract class AbstractQueryInsert implements Query {
     /**
      * Список значений для prepared statement.
      */
-    protected List<Object> preparedObjects = null;
+    protected ArrayList<Object> preparedObjects = null;
 
     /**
      * Конструктор класса `AbstractQueryInsert`.
@@ -59,7 +59,7 @@ public abstract class AbstractQueryInsert implements Query {
      * @throws NullPointerException Если параметры prepared statement не указаны.
      */
     @Override
-    public List<Object> getPreparedObjects() {
+    public ArrayList<Object> getPreparedObjects() {
         if (preparedObjects == null) throw new NullPointerException("Не указаны параметры preparedObjects");
         return preparedObjects;
     }

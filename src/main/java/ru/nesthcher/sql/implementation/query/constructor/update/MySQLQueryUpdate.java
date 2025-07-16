@@ -1,6 +1,6 @@
 package ru.nesthcher.sql.implementation.query.constructor.update;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -29,8 +29,8 @@ public final class MySQLQueryUpdate extends AbstractQueryUpdate {
      */
     @Override
     public String toString() {
-        final Pair<String, List<Object>> whereConvertEntries = where.getConvertEntries();
-        final Pair<String, List<Object>> setConvertEntries = QueryUtil.convertEntries(entries, false);
+        final Pair<String, ArrayList<Object>> whereConvertEntries = where.getConvertEntries();
+        final Pair<String, ArrayList<Object>> setConvertEntries = QueryUtil.convertEntries(entries, false);
         preparedObjects = setConvertEntries.getSecond();
         preparedObjects.addAll(whereConvertEntries.getSecond());
 

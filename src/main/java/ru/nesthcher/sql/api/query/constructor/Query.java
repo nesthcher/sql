@@ -1,6 +1,6 @@
 package ru.nesthcher.sql.api.query.constructor;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Интерфейс `Query` определяет методы для работы с SQL запросами.
@@ -16,5 +16,5 @@ public interface Query {
      * Возвращает список значений для prepared statement.
      * @return Список значений для prepared statement.
      */
-    List<Object> getPreparedObjects();
+    ArrayList<Object> getPreparedObjects();
 }

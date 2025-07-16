@@ -2,7 +2,7 @@ package ru.nesthcher.sql.api.table.constructor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +17,7 @@ public abstract class BaseTableConstructor implements AbstractTableConstructor {
     @Getter
     protected final String name;
     protected final HashMap<String, AbstractTableColumn> tableColumns = new HashMap<>();
-    protected final List<String> columns = new ArrayList<>();
+    protected final ArrayList<String> columns = new ArrayList<>();
 
     public BaseTableConstructor(
             @NotNull final AbstractDatabase database,

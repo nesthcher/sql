@@ -3,7 +3,7 @@ package ru.nesthcher.sql.api;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -77,9 +77,9 @@ public class StatementWrapper {
     ) throws SQLException {
         final PreparedStatement ps = database.getConnection().prepareStatement(query, generatedKeys);
         if (objects != null) {
-            if (objects.length == 1 && objects[0] instanceof List) {
+            if (objects.length == 1 && objects[0] instanceof ArrayList) {
                 int i = 1;
-                for (Object obj : (List<?>) objects[0])
+                for (Object obj : (ArrayList<?>) objects[0])
                     ps.setObject(i++, obj);
             } else {
                 for (int i = 0; i < objects.length; i++)
