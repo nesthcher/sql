@@ -19,10 +19,10 @@ public interface AbstractTable {
      * @param tableName Название таблицы.
      * @return Объект `AbstractTableConstructor`, представляющий конструктор таблицы.
      */
-    AbstractTableConstructor constructor(@NotNull final String tableName);
+    AbstractTableConstructor constructor(@NotNull String tableName);
     /**
      * Удаляет таблицу из базы данных.
      * @param tableName Название таблицы, которую необходимо удалить.
      */
-    void delete(@NotNull final String tableName);
+    void delete(@NotNull String tableName);
 }

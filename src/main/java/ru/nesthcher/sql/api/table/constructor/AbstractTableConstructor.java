@@ -15,22 +15,22 @@ public interface AbstractTableConstructor {
      * @param columnType Тип колонки.
      * @return Объект `AbstractTableColumn`, представляющий колонку таблицы.
      */
-    AbstractTableColumn newColumn(@NotNull final String name, @NotNull final ColumnType columnType);
+    AbstractTableColumn newColumn(@NotNull String name, @NotNull ColumnType columnType);
     /**
      * Добавляет колонку в таблицу.
      * @param column Объект `AbstractTableColumn`, представляющий колонку таблицы.
      */
-    void addColumn(@NotNull final AbstractTableColumn column);
+    void addColumn(@NotNull AbstractTableColumn column);
     /**
      * Удаляет колонку из таблицы.
      * @param name Название колонки, которую необходимо удалить.
      */
-    void removeColumn(@NotNull final String name);
+    void removeColumn(@NotNull String name);
     /**
      * Добавляет индекс для колонки.
      * @param column Название колонки, для которой необходимо создать индекс.
      */
-    void addIndex(@NotNull final String column);
+    void addIndex(@NotNull String column);
     /**
      * Преобразует конструктор таблицы в SQL строку.
      * @return SQL строка, представляющая конструктор таблицы.

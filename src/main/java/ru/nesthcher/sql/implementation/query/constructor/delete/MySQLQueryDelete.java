@@ -17,7 +17,7 @@ public final class MySQLQueryDelete extends AbstractQueryDelete {
      * @param table Название таблицы, из которой необходимо удалить данные.
      */
     public MySQLQueryDelete(
-            @NotNull final String table
+            @NotNull String table
     ) {
         super(table);
     }
@@ -28,7 +28,7 @@ public final class MySQLQueryDelete extends AbstractQueryDelete {
      */
     @Override
     public String toString() {
-        final Pair<String, ArrayList<Object>> convertEntries = where.getConvertEntries();
+        Pair<String, ArrayList<Object>> convertEntries = where.getConvertEntries();
         preparedObjects = convertEntries.getSecond();
         return "DELETE FROM `" + table + "` WHERE " + convertEntries.getFirst()
                 + (limitSize != 0 ? " LIMIT " + limitSize : "") + ";";

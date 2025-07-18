@@ -29,9 +29,9 @@ public class QueryWhere implements AbstractQueryWhere {
      */
     @Override
     public void put(
-            @NotNull final String column,
-            @NotNull final QuerySymbol symbol,
-            final Object result
+            @NotNull String column,
+            @NotNull QuerySymbol symbol,
+            Object result
     ) {
         if (column.isEmpty()) throw new IllegalArgumentException("Название колонки не может быть пустым");
         entries.put(column, new Pair<>(result, symbol));

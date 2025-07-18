@@ -33,7 +33,7 @@ public abstract class AbstractQueryInsert implements Query {
      * @throws IllegalArgumentException Если название таблицы пустое.
      */
     public AbstractQueryInsert(
-            @NotNull final String table
+            @NotNull String table
     ) {
         if (table.isEmpty()) throw new IllegalArgumentException("Название таблицы не может быть пустым");
         this.table = table;
@@ -46,7 +46,7 @@ public abstract class AbstractQueryInsert implements Query {
      * @return Текущий объект `AbstractQueryInsert`.
      */
     public AbstractQueryInsert set(
-            @NotNull final String column,
+            @NotNull String column,
             final Object value
     ) {
         entries.put(column, new Pair<>(value, null));

@@ -18,7 +18,7 @@ public final class SQLiteQueryUpdate extends AbstractQueryUpdate {
      * @param table Название таблицы, которую необходимо обновить.
      */
     public SQLiteQueryUpdate(
-            @NotNull final String table
+            @NotNull String table
     ) {
         super(table);
     }
@@ -29,8 +29,8 @@ public final class SQLiteQueryUpdate extends AbstractQueryUpdate {
      */
     @Override
     public String toString() {
-        final Pair<String, ArrayList<Object>> whereConvertEntries = where.getConvertEntries();
-        final Pair<String, ArrayList<Object>> setConvertEntries = QueryUtil.convertEntries(entries, false);
+        Pair<String, ArrayList<Object>> whereConvertEntries = where.getConvertEntries();
+        Pair<String, ArrayList<Object>> setConvertEntries = QueryUtil.convertEntries(entries, false);
         preparedObjects = setConvertEntries.getSecond();
         preparedObjects.addAll(whereConvertEntries.getSecond());
 

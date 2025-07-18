@@ -23,7 +23,7 @@ public final class SQLiteQuery extends BaseQuery {
      * @param database Абстрактная база данных, с которой будут выполняться запросы.
      */
     public SQLiteQuery(
-            @NotNull final AbstractDatabase database
+            @NotNull AbstractDatabase database
     ) {
         super(database);
     }
@@ -35,7 +35,7 @@ public final class SQLiteQuery extends BaseQuery {
      */
     @Override
     public AbstractQueryDelete delete(
-            @NotNull final String table
+            @NotNull String table
     ) {
         return new SQLiteQueryDelete(table);
     }
@@ -47,7 +47,7 @@ public final class SQLiteQuery extends BaseQuery {
      */
     @Override
     public AbstractQueryInsert insert(
-            @NotNull final String table
+            @NotNull String table
     ) {
         return new SQLiteQueryInsert(table);
     }
@@ -59,7 +59,7 @@ public final class SQLiteQuery extends BaseQuery {
      */
     @Override
     public AbstractQuerySelect select(
-            @NotNull final String table
+            @NotNull String table
     ) {
         return new SQLiteQuerySelect(table);
     }
@@ -71,7 +71,7 @@ public final class SQLiteQuery extends BaseQuery {
      */
     @Override
     public AbstractQueryUpdate update(
-            @NotNull final String table
+            @NotNull String table
     ) {
         return new SQLiteQueryUpdate(table);
     }

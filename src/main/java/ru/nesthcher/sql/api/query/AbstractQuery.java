@@ -22,23 +22,23 @@ public interface AbstractQuery {
      * @param table Название таблицы, из которой необходимо удалить данные.
      * @return Объект `AbstractQueryDelete`, представляющий конструктор запроса на удаление данных.
      */
-    AbstractQueryDelete delete(@NotNull final String table);
+    AbstractQueryDelete delete(@NotNull String table);
     /**
      * Создает конструктор запроса на вставку данных.
      * @param table Название таблицы, в которую необходимо вставить данные.
      * @return Объект `AbstractQueryInsert`, представляющий конструктор запроса на вставку данных.
      */
-    AbstractQueryInsert insert(@NotNull final String table);
+    AbstractQueryInsert insert(@NotNull String table);
     /**
      * Создает конструктор запроса на выборку данных.
      * @param table Название таблицы, из которой необходимо выбрать данные.
      * @return Объект `AbstractQuerySelect`, представляющий конструктор запроса на выборку данных.
      */
-    AbstractQuerySelect select(@NotNull final String table);
+    AbstractQuerySelect select(@NotNull String table);
     /**
      * Создает конструктор запроса на обновление данных.
      * @param table Название таблицы, в которой необходимо обновить данные.
      * @return Объект `AbstractQueryUpdate`, представляющий конструктор запроса на обновление данных.
      */
-    AbstractQueryUpdate update(@NotNull final String table);
+    AbstractQueryUpdate update(@NotNull String table);
 }

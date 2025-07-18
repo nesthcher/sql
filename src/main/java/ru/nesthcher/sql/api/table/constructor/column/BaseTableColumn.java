@@ -47,8 +47,8 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
      * @param columnType Тип колонки.
      */
     public BaseTableColumn(
-            @NotNull final String name,
-            @NotNull final ColumnType columnType
+            @NotNull String name,
+            @NotNull ColumnType columnType
     ) {
         this.name = name;
         this.columnType = columnType;
@@ -61,7 +61,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
      */
     @Override
     public BaseTableColumn setNull(
-            final boolean nullValue
+            boolean nullValue
     ) {
         this.nullValue = nullValue;
         return this;
@@ -74,7 +74,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
      */
     @Override
     public BaseTableColumn setDefaultValue(
-            final Object defaultValue
+            Object defaultValue
     ) {
         this.defaultValue = defaultValue;
         return this;
@@ -87,7 +87,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
      */
     @Override
     public BaseTableColumn primaryKey(
-            final boolean primaryKey
+            boolean primaryKey
     ) {
         this.primaryKey = primaryKey;
         return this;
@@ -100,7 +100,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
      */
     @Override
     public BaseTableColumn unique(
-            final boolean unique
+            boolean unique
     ) {
         this.unique = unique;
         return this;
@@ -113,7 +113,7 @@ public abstract class BaseTableColumn implements AbstractTableColumn {
      */
     @Override
     public BaseTableColumn autoIncrement(
-            final boolean autoIncrement
+            boolean autoIncrement
     ) {
         this.autoIncrement = autoIncrement;
         return this;

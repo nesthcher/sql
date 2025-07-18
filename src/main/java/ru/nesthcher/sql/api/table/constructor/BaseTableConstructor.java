@@ -2,7 +2,6 @@ package ru.nesthcher.sql.api.table.constructor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -20,8 +19,8 @@ public abstract class BaseTableConstructor implements AbstractTableConstructor {
     protected final ArrayList<String> columns = new ArrayList<>();
 
     public BaseTableConstructor(
-            @NotNull final AbstractDatabase database,
-            @NotNull final String name
+            @NotNull AbstractDatabase database,
+            @NotNull String name
     ) {
         this.database = database;
         this.name = name;
@@ -29,25 +28,27 @@ public abstract class BaseTableConstructor implements AbstractTableConstructor {
 
     @Override
     public abstract AbstractTableColumn newColumn(
-            @NotNull final String name,
-            @NotNull final ColumnType columnType
+            @NotNull String name,
+            @NotNull ColumnType columnType
     );
 
     @Override
     public void addColumn(
-            @NotNull final AbstractTableColumn column
+            @NotNull AbstractTableColumn column
     ) {
         tableColumns.put(column.getName(), column);
     }
 
     @Override
-    public void removeColumn(@NotNull final String name) {
+    public void removeColumn(
+            @NotNull String name
+    ) {
         tableColumns.remove(name);
     }
 
     @Override
     public final void addIndex(
-            @NotNull final String column
+            @NotNull String column
     ) {
         this.columns.add(column);
     }

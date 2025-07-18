@@ -16,7 +16,7 @@ public final class MySQLTable extends BaseTable {
      * @param database Абстрактная база данных, с которой будет работать таблица.
      */
     public MySQLTable(
-            @NotNull final AbstractDatabase database
+            @NotNull AbstractDatabase database
     ) {
         super(database);
     }
@@ -28,7 +28,7 @@ public final class MySQLTable extends BaseTable {
      */
     @Override
     public AbstractTableConstructor constructor(
-            @NotNull final String tableName
+            @NotNull String tableName
     ) {
         return new MySQLTableConstructor(database, tableName);
     }
@@ -39,7 +39,7 @@ public final class MySQLTable extends BaseTable {
      */
     @Override
     public void delete(
-            @NotNull final String tableName
+            @NotNull String tableName
     ) {
         database.execute("DROP TABLE IF EXISTS " + tableName + ";");
     }

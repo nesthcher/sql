@@ -12,5 +12,5 @@ public interface ResponseHandler<H, R> {
      * @return Результат обработки запроса.
      * @throws Exception Если произошла ошибка при обработке результата запроса.
      */
-    R handleResponse(final H handle) throws Exception;
+    R handleResponse(H handle) throws Exception;
 }

@@ -16,8 +16,8 @@ public final class SQLiteTableColumn extends BaseTableColumn {
      * @param columnType Тип колонки.
      */
     public SQLiteTableColumn(
-            @NotNull final String name,
-            @NotNull final ColumnType columnType
+            @NotNull String name,
+            @NotNull ColumnType columnType
     ) {
         super(name, columnType);
     }

@@ -25,7 +25,7 @@ public abstract class BaseQuery implements AbstractQuery {
      * @param database База данных, с которой работает запрос.
      */
     protected BaseQuery(
-            @NotNull final AbstractDatabase database
+            @NotNull AbstractDatabase database
     ) {
         this.database = database;
     }
@@ -38,7 +38,7 @@ public abstract class BaseQuery implements AbstractQuery {
      */
     @Override
     public abstract AbstractQueryDelete delete(
-            @NotNull final String table
+            @NotNull String table
     );
 
     /**
@@ -49,7 +49,7 @@ public abstract class BaseQuery implements AbstractQuery {
      */
     @Override
     public abstract AbstractQueryInsert insert(
-            @NotNull final String table
+            @NotNull String table
     );
 
     /**
@@ -60,7 +60,7 @@ public abstract class BaseQuery implements AbstractQuery {
      */
     @Override
     public abstract AbstractQuerySelect select(
-            @NotNull final String table
+            @NotNull String table
     );
 
     /**
@@ -71,6 +71,6 @@ public abstract class BaseQuery implements AbstractQuery {
      */
     @Override
     public abstract AbstractQueryUpdate update(
-            @NotNull final String table
+            @NotNull String table
     );
 }

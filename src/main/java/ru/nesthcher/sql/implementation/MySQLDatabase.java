@@ -8,6 +8,7 @@ import ru.nesthcher.sql.api.query.AbstractQuery;
 import ru.nesthcher.sql.api.table.AbstractTable;
 import ru.nesthcher.sql.implementation.query.MySQLQuery;
 import ru.nesthcher.sql.implementation.table.MySQLTable;
+import ru.nesthcher.utils.logger.AbstractLoggerApi;
 
 /**
  * Класс `MySQLDatabase` реализует подключение к базе данных MySQL, используя HikariCP для управления пулом соединений.
@@ -43,12 +44,15 @@ public final class MySQLDatabase extends HikariPoolDatabase {
      * @param port Порт для подключения к базе данных MySQL.
      */
     public MySQLDatabase(
-            @NotNull final String host,
-            @NotNull final String user,
-            @NotNull final String password,
-            @NotNull final String data,
-            final int port
+            @NotNull AbstractLoggerApi loggerApi,
+            boolean activeLogs,
+            @NotNull String host,
+            @NotNull String user,
+            @NotNull String password,
+            @NotNull String data,
+            int port
 	) {
+        super(loggerApi, activeLogs);
         this.host = host;
         this.password = password;
         this.user = user;
@@ -64,7 +68,7 @@ public final class MySQLDatabase extends HikariPoolDatabase {
      */
     @Override
     protected @NotNull HikariDataSource configureDataSource(
-            @NotNull final HikariDataSource source
+            @NotNull HikariDataSource source
     ) {
         source.setDriverClassName("com.mysql.cj.jdbc.Driver");
         source.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + data

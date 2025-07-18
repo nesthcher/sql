@@ -19,7 +19,7 @@ public final class SQLiteQueryInsert extends AbstractQueryInsert {
      * @param table Название таблицы, в которую необходимо вставить данные.
      */
     public SQLiteQueryInsert(
-            @NotNull final String table
+            @NotNull String table
     ) {
         super(table);
     }
@@ -30,12 +30,12 @@ public final class SQLiteQueryInsert extends AbstractQueryInsert {
      */
     @Override
     public String toString() {
-        final String columns = entries.keySet().stream().map(s -> "`" + s + "`")
+        String columns = entries.keySet().stream().map(s -> "`" + s + "`")
                 .collect(Collectors.joining(", "));
-        final String values = entries.keySet().stream().map(s -> "?")
+        String values = entries.keySet().stream().map(s -> "?")
                 .collect(Collectors.joining(", "));
 
-        final Pair<String, ArrayList<Object>> convertEntries = QueryUtil.convertEntries(entries, false);
+        Pair<String, ArrayList<Object>> convertEntries = QueryUtil.convertEntries(entries, false);
         preparedObjects = convertEntries.getSecond();
 
         return "INSERT INTO `" + table + "` (" + columns + ") VALUES (" + values + ");";

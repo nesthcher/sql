@@ -42,7 +42,7 @@ public abstract class AbstractQueryDelete implements Query {
      * @throws IllegalArgumentException Если название таблицы пустое.
      */
     public AbstractQueryDelete(
-            @NotNull final String table
+            @NotNull String table
     ) {
         if (table.isEmpty()) throw new IllegalArgumentException("Название таблицы не может быть пустым");
         this.table = table;
@@ -56,9 +56,9 @@ public abstract class AbstractQueryDelete implements Query {
      * @return Текущий объект `AbstractQueryDelete`.
      */
     public AbstractQueryDelete where(
-            @NotNull final String column,
-            @NotNull final QuerySymbol symbol,
-            @NotNull final Object result
+            @NotNull String column,
+            @NotNull QuerySymbol symbol,
+            @NotNull Object result
     ) {
         where.put(column, symbol, result);
         return this;
@@ -78,7 +78,7 @@ public abstract class AbstractQueryDelete implements Query {
      * @return Текущий объект `AbstractQueryDelete`.
      */
     public AbstractQueryDelete limit(
-            final int limit
+            int limit
     ) {
         if (limit < 0) return this;
         this.limitSize = limit;

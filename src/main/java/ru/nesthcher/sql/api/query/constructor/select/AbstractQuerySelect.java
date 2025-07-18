@@ -42,7 +42,7 @@ public abstract class AbstractQuerySelect implements Query {
      * @throws IllegalArgumentException Если название таблицы пустое.
      */
     public AbstractQuerySelect(
-            @NotNull final String table
+            @NotNull String table
     ) {
         if (table.isEmpty()) throw new IllegalArgumentException("Название таблицы не может быть пустым");
         this.table = table;
@@ -56,9 +56,9 @@ public abstract class AbstractQuerySelect implements Query {
      * @return Текущий объект `AbstractQuerySelect`.
      */
     public AbstractQuerySelect where(
-            @NotNull final String column,
-            @NotNull final QuerySymbol symbol,
-            final Object result
+            @NotNull String column,
+            @NotNull QuerySymbol symbol,
+            Object result
     ) {
         where.put(column, symbol, result);
         return this;
@@ -78,7 +78,7 @@ public abstract class AbstractQuerySelect implements Query {
      * @return Текущий объект `AbstractQuerySelect`.
      */
     public AbstractQuerySelect limit(
-            final int limit
+            int limit
     ) {
         if (limit < 0) return this;
         this.limitSize = limit;
@@ -91,7 +91,7 @@ public abstract class AbstractQuerySelect implements Query {
      * @return Текущий объект `AbstractQuerySelect`.
      */
     public AbstractQuerySelect result(
-            @NotNull final String result
+            @NotNull String result
     ) {
         if (!result.equals("*")) this.result = result;
         return this;

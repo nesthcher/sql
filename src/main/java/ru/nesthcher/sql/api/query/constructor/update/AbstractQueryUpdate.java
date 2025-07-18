@@ -44,7 +44,7 @@ public abstract class AbstractQueryUpdate implements Query {
      * @throws IllegalArgumentException Если название таблицы пустое.
      */
     public AbstractQueryUpdate(
-            @NotNull final String table
+            @NotNull String table
     ) {
         if (table.isEmpty()) throw new IllegalArgumentException("Название таблицы не может быть пустым");
         this.table = table;
@@ -57,8 +57,8 @@ public abstract class AbstractQueryUpdate implements Query {
      * @return Текущий объект `AbstractQueryUpdate`.
      */
     public AbstractQueryUpdate set(
-            @NotNull final String column,
-            final Object value
+            @NotNull String column,
+            Object value
     ) {
         entries.put(column, new Pair<>(value, null));
         return this;
@@ -72,9 +72,9 @@ public abstract class AbstractQueryUpdate implements Query {
      * @return Текущий объект `AbstractQueryUpdate`.
      */
     public AbstractQueryUpdate where(
-            @NotNull final String column,
-            @NotNull final QuerySymbol symbol,
-            final Object result
+            @NotNull String column,
+            @NotNull QuerySymbol symbol,
+            Object result
     ) {
         where.put(column, symbol, result);
         return this;
@@ -94,7 +94,7 @@ public abstract class AbstractQueryUpdate implements Query {
      * @return Текущий объект `AbstractQueryUpdate`.
      */
     public AbstractQueryUpdate limit(
-            final int limit
+            int limit
     ) {
         if (limit < 0) return this;
 

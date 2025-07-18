@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -15,12 +16,20 @@ import ru.nesthcher.sql.api.StatementWrapper;
 import ru.nesthcher.sql.api.query.AbstractQuery;
 import ru.nesthcher.sql.api.query.constructor.Query;
 import ru.nesthcher.sql.api.table.AbstractTable;
+import ru.nesthcher.utils.logger.AbstractLoggerApi;
 
 /**
  * Абстрактный класс `HikariPoolDatabase` реализует интерфейс `AbstractDatabase` и предоставляет базовую функциональность
  * для работы с базой данных, используя HikariCP для управления пулом соединений.
  */
 public abstract class HikariPoolDatabase implements AbstractDatabase {
+    /**
+     * Источник данных HikariCP.
+     */
+    @Getter
+    private final AbstractLoggerApi loggerApi;
+    @Getter
+    private final boolean activeLogs;
     /**
      * Источник данных HikariCP.
      */
@@ -38,6 +47,14 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
      */
     protected AbstractQuery query;
 
+    public HikariPoolDatabase(
+            @NotNull AbstractLoggerApi loggerApi,
+            boolean activeLogs
+    ) {
+        this.loggerApi = loggerApi;
+        this.activeLogs = activeLogs;
+    }
+
     /**
      * Метод, вызываемый при подключении к базе данных.
      * Инициализирует источник данных HikariCP.
@@ -53,7 +70,7 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
      * @return Сконфигурированный источник данных HikariCP.
      */
     protected abstract @NotNull HikariDataSource configureDataSource(
-            @NotNull final HikariDataSource source
+            @NotNull HikariDataSource source
     );
 
     /**
@@ -73,8 +90,8 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
      */
     @Override
     public int execute(
-            @NotNull final String query,
-            final Object... objects
+            @NotNull String query,
+            Object... objects
     ) {
         return execute(StatementWrapper.create(this, query), objects);
     }
@@ -86,7 +103,7 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
      */
     @Override
     public int execute(
-            @NotNull final Query query
+            @NotNull Query query
     ) {
         return execute(StatementWrapper.create(this, query.toString()), query.getPreparedObjects());
     }
@@ -99,8 +116,8 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
      */
     @Override
     public int execute(
-            @NotNull final StatementWrapper wrapper,
-            final Object... objects
+            @NotNull StatementWrapper wrapper,
+            Object... objects
     ) {
         return wrapper.execute(PreparedStatement.RETURN_GENERATED_KEYS, objects);
     }
@@ -115,8 +132,8 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
      */
     @Override
     public <T> T executeQuery(
-            @NotNull final String query,
-            final ResponseHandler<ResultSet, T> handler,
+            @NotNull String query,
+            ResponseHandler<ResultSet, T> handler,
             Object... objects
     ) {
         return executeQuery(StatementWrapper.create(this, query), handler, objects);
@@ -131,8 +148,8 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
      */
     @Override
     public <T> T executeQuery(
-            @NotNull final Query query,
-            final ResponseHandler<ResultSet, T> handler
+            @NotNull Query query,
+            ResponseHandler<ResultSet, T> handler
     ) {
         return executeQuery(StatementWrapper.create(this, query.toString()), handler, query.getPreparedObjects());
     }
@@ -147,9 +164,9 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
      */
     @Override
     public <T> T executeQuery(
-            @NotNull final StatementWrapper wrapper,
-            final ResponseHandler<ResultSet, T> handler,
-            final Object... objects
+            @NotNull StatementWrapper wrapper,
+            ResponseHandler<ResultSet, T> handler,
+            Object... objects
     ) {
         return wrapper.executeQuery(handler, objects);
     }
@@ -194,6 +211,7 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
             if (isLocalConnected()) return;
             this.connection = dataSource.getConnection();
         } catch (SQLException e) {
+            getLoggerApi().log(HikariPoolDatabase.class, "Обрыв связи c базой данных");
             onConnect();
         }
     }

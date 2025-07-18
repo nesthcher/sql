@@ -37,8 +37,8 @@ public class StatementWrapper {
      * @return Объект `StatementWrapper`.
      */
     public static StatementWrapper create(
-            @NotNull final AbstractDatabase database,
-            @NotNull final String query
+            @NotNull AbstractDatabase database,
+            @NotNull String query
     ) {
         return new StatementWrapper(database).setQuery(query);
     }
@@ -49,7 +49,7 @@ public class StatementWrapper {
      * @return Текущий объект `StatementWrapper`.
      */
     public StatementWrapper setQuery(
-            @NotNull final String query
+            @NotNull String query
     ) {
         this.query = query;
         return this;
@@ -72,10 +72,10 @@ public class StatementWrapper {
      * @throws SQLException Если произошла ошибка при создании `PreparedStatement`.
      */
     private @NotNull PreparedStatement createStatement(
-            final int generatedKeys,
-            final Object... objects
+            int generatedKeys,
+            Object... objects
     ) throws SQLException {
-        final PreparedStatement ps = database.getConnection().prepareStatement(query, generatedKeys);
+        PreparedStatement ps = database.getConnection().prepareStatement(query, generatedKeys);
         if (objects != null) {
             if (objects.length == 1 && objects[0] instanceof ArrayList) {
                 int i = 1;
@@ -90,6 +90,8 @@ public class StatementWrapper {
         if (objects == null || objects.length == 0) {
             ps.clearParameters();
         }
+        if(database.isActiveLogs())
+            database.getLoggerApi().log(StatementWrapper.class,"PreparedStatement: " + ps.toString());
         return ps;
     }
 
@@ -108,12 +110,12 @@ public class StatementWrapper {
      * @return Количество затронутых строк или сгенерированный ключ.
      */
     public int execute(
-            final int generatedKeys,
-            final Object... objects
+            int generatedKeys,
+            Object... objects
     ) {
         validateQuery();
 
-        final Callable<Integer> callable = () -> {
+        Callable<Integer> callable = () -> {
             try (PreparedStatement ps = createStatement(generatedKeys, objects)) {
                 ps.execute();
 
@@ -133,15 +135,15 @@ public class StatementWrapper {
      * @return Результат обработки запроса.
      */
     public <T> T executeQuery(
-            final ResponseHandler<ResultSet, T> handler,
-            final Object... objects
+            ResponseHandler<ResultSet, T> handler,
+            Object... objects
     ) {
         validateQuery();
 
-        final Callable<T> callable = () -> {
+        Callable<T> callable = () -> {
             try (PreparedStatement ps = createStatement(PreparedStatement.NO_GENERATED_KEYS, objects)) {
 
-                final ResultSet rs = ps.executeQuery();
+                ResultSet rs = ps.executeQuery();
 
                 return handler.handleResponse(rs);
             }
@@ -157,10 +159,10 @@ public class StatementWrapper {
      * @return Результат выполнения запроса.
      */
     private <T> T handle(
-            final Callable<T> callable
+            Callable<T> callable
     ) {
         if (!sync) {
-            final Future<T> future = AbstractDatabase.QUERY_EXECUTOR.submit(callable);
+            Future<T> future = AbstractDatabase.QUERY_EXECUTOR.submit(callable);
             try {
                 return future.get();
             } catch (InterruptedException | ExecutionException e) {

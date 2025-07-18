@@ -17,7 +17,7 @@ public final class SQLiteQuerySelect extends AbstractQuerySelect {
      * @param table Название таблицы, из которой необходимо выбрать данные.
      */
     public SQLiteQuerySelect(
-            @NotNull final String table
+            @NotNull String table
     ) {
         super(table);
     }
@@ -28,7 +28,7 @@ public final class SQLiteQuerySelect extends AbstractQuerySelect {
      */
     @Override
     public String toString() {
-        final Pair<String, ArrayList<Object>> convertEntries = where.getConvertEntries();
+        Pair<String, ArrayList<Object>> convertEntries = where.getConvertEntries();
         preparedObjects = convertEntries.getSecond();
         return "SELECT " + (result == null ? "*" : "`" + result + "`") + " FROM `" + table
                 + "` WHERE " + convertEntries.getFirst() + (limitSize != 0 ? " LIMIT " + limitSize : "") + ";";

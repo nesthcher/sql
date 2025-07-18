@@ -22,15 +22,15 @@ public class QueryUtil {
      * @throws IllegalArgumentException Если карта записей пуста.
      */
     public @NotNull Pair<String, ArrayList<Object>> convertEntries(
-            @NotNull final LinkedHashMap<String, Pair<Object, Object>> entrys,
-            final boolean isWhere
+            @NotNull LinkedHashMap<String, Pair<Object, Object>> entrys,
+            boolean isWhere
     ) {
         if (entrys.isEmpty()) throw new IllegalArgumentException("Entries не может быть пустым.");
-        final StringBuilder sb = new StringBuilder();
-        final ArrayList<Object> values = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        ArrayList<Object> values = new ArrayList<>();
         int size = 0;
         String column;
-        for (final Map.Entry<String, Pair<Object, Object>> entry : entrys.entrySet()) {
+        for (Map.Entry<String, Pair<Object, Object>> entry : entrys.entrySet()) {
             column = entry.getKey();
             values.add(entry.getValue().getFirst());
             sb.append("`")

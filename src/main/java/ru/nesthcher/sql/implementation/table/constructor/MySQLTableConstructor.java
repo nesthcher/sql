@@ -21,8 +21,8 @@ public final class MySQLTableConstructor extends BaseTableConstructor {
      * @param name Название создаваемой таблицы.
      */
     public MySQLTableConstructor(
-            @NotNull final AbstractDatabase database,
-            @NotNull final String name
+            @NotNull AbstractDatabase database,
+            @NotNull String name
     ) {
         super(database, name);
     }
@@ -35,8 +35,8 @@ public final class MySQLTableConstructor extends BaseTableConstructor {
      */
     @Override
     public AbstractTableColumn newColumn(
-            @NotNull final String name,
-            @NotNull final ColumnType columnType
+            @NotNull String name,
+            @NotNull ColumnType columnType
     ) {
         return new MySQLTableColumn(name, columnType);
     }
@@ -50,7 +50,7 @@ public final class MySQLTableConstructor extends BaseTableConstructor {
         String columnSql = tableColumns.values().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining(", "));
-        final String primary = tableColumns.values().stream()
+        String primary = tableColumns.values().stream()
                 .filter(AbstractTableColumn::isPrimaryKey)
                 .map(AbstractTableColumn::getName)
                 .collect(Collectors.joining(", "));
@@ -70,7 +70,7 @@ public final class MySQLTableConstructor extends BaseTableConstructor {
     public void create() {
         database.execute(this.toString());
 
-        for (final String columnName : columns) {
+        for (String columnName : columns) {
             database.execute("ALTER TABLE `" + name + "` ADD INDEX (`" + columnName + "`);");
         }
     }

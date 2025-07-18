@@ -26,7 +26,7 @@ public interface AbstractTableColumn {
      * @param nullValue Значение флага.
      * @return Текущий объект `AbstractTableColumn`.
      */
-    AbstractTableColumn setNull(final boolean nullValue);
+    AbstractTableColumn setNull(boolean nullValue);
     /**
      * Возвращает значение по умолчанию для колонки.
      * @return Значение по умолчанию.
@@ -37,7 +37,7 @@ public interface AbstractTableColumn {
      * @param defaultValue Значение по умолчанию.
      * @return Текущий объект `AbstractTableColumn`.
      */
-    AbstractTableColumn setDefaultValue(final Object defaultValue);
+    AbstractTableColumn setDefaultValue(Object defaultValue);
     /**
      * Возвращает флаг, указывающий, является ли колонка первичным ключом.
      * @return `true`, если колонка является первичным ключом, иначе `false`.
@@ -48,7 +48,7 @@ public interface AbstractTableColumn {
      * @param primaryKey Значение флага.
      * @return Текущий объект `AbstractTableColumn`.
      */
-    AbstractTableColumn primaryKey(final boolean primaryKey);
+    AbstractTableColumn primaryKey(boolean primaryKey);
     /**
      * Возвращает флаг, указывающий, является ли колонка уникальной.
      * @return `true`, если колонка является уникальной, иначе `false`.
@@ -59,7 +59,7 @@ public interface AbstractTableColumn {
      * @param unique Значение флага.
      * @return Текущий объект `AbstractTableColumn`.
      */
-    AbstractTableColumn unique(final boolean unique);
+    AbstractTableColumn unique(boolean unique);
     /**
      * Возвращает флаг, указывающий, является ли колонка автоинкрементной.
      * @return `true`, если колонка является автоинкрементной, иначе `false`.
@@ -70,7 +70,7 @@ public interface AbstractTableColumn {
      * @param autoIncrement Значение флага.
      * @return Текущий объект `AbstractTableColumn`.
      */
-    AbstractTableColumn autoIncrement(final boolean autoIncrement);
+    AbstractTableColumn autoIncrement(boolean autoIncrement);
     /**
      * Преобразует колонку в SQL строку.
      * @return SQL строка, представляющая колонку.

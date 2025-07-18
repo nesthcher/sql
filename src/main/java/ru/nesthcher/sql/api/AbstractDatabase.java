@@ -10,11 +10,20 @@ import org.jetbrains.annotations.NotNull;
 import ru.nesthcher.sql.api.query.AbstractQuery;
 import ru.nesthcher.sql.api.query.constructor.Query;
 import ru.nesthcher.sql.api.table.AbstractTable;
+import ru.nesthcher.utils.logger.AbstractLoggerApi;
 
 /**
  * Интерфейс `AbstractDatabase` определяет методы для работы с базой данных.
  */
 public interface AbstractDatabase {
+    /**
+     * Объект для создания логов
+     */
+    AbstractLoggerApi getLoggerApi();
+    /**
+     * Флаг включение/выключения логирования
+     */
+    boolean isActiveLogs();
     /**
      * Пул потоков для выполнения SQL запросов асинхронно.
      */
@@ -31,20 +40,20 @@ public interface AbstractDatabase {
      * @param objects Параметры для prepared statement.
      * @return Количество затронутых строк.
      */
-    int execute(@NotNull final String query, final Object... objects);
+    int execute(@NotNull String query, Object... objects);
     /**
      * Выполняет SQL запрос к базе данных, используя объект `Query`.
      * @param query Объект `Query`, содержащий SQL запрос и параметры.
      * @return Количество затронутых строк.
      */
-    int execute(@NotNull final Query query);
+    int execute(@NotNull Query query);
     /**
      * Выполняет SQL запрос к базе данных, используя объект `StatementWrapper`.
      * @param wrapper Объект `StatementWrapper`, содержащий SQL запрос и параметры.
      * @param objects Параметры для prepared statement.
      * @return Количество затронутых строк.
      */
-    int execute(@NotNull final StatementWrapper wrapper, final Object... objects);
+    int execute(@NotNull StatementWrapper wrapper, Object... objects);
     /**
      * Выполняет SQL запрос к базе данных и обрабатывает результат с помощью `ResponseHandler`.
      * @param query SQL запрос.
@@ -53,7 +62,7 @@ public interface AbstractDatabase {
      * @param <T> Тип возвращаемого значения.
      * @return Результат обработки запроса.
      */
-    <T> T executeQuery(@NotNull final String query, final ResponseHandler<ResultSet, T> handler, final Object... objects);
+    <T> T executeQuery(@NotNull String query, ResponseHandler<ResultSet, T> handler, Object... objects);
     /**
      * Выполняет SQL запрос к базе данных, используя объект `Query` и обрабатывает результат с помощью `ResponseHandler`.
      * @param Query Объект `Query`, содержащий SQL запрос и параметры.
@@ -61,7 +70,7 @@ public interface AbstractDatabase {
      * @param <T> Тип возвращаемого значения.
      * @return Результат обработки запроса.
      */
-    <T> T executeQuery(@NotNull final Query Query, final ResponseHandler<ResultSet, T> handler);
+    <T> T executeQuery(@NotNull Query Query, ResponseHandler<ResultSet, T> handler);
     /**
      * Выполняет SQL запрос к базе данных, используя объект `StatementWrapper` и обрабатывает результат с помощью `ResponseHandler`.
      * @param wrapper Объект `StatementWrapper`, содержащий SQL запрос и параметры.
@@ -70,7 +79,7 @@ public interface AbstractDatabase {
      * @param <T> Тип возвращаемого значения.
      * @return Результат обработки запроса.
      */
-    <T> T executeQuery(@NotNull final StatementWrapper wrapper, final ResponseHandler<ResultSet, T> handler, final Object... objects);
+    <T> T executeQuery(@NotNull StatementWrapper wrapper, ResponseHandler<ResultSet, T> handler, Object... objects);
     /**
      * Закрывает соединение с базой данных.
      */

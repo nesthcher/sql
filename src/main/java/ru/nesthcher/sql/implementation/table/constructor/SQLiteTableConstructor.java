@@ -21,8 +21,8 @@ public final class SQLiteTableConstructor extends BaseTableConstructor {
      * @param name Название создаваемой таблицы.
      */
     public SQLiteTableConstructor(
-            @NotNull final AbstractDatabase database,
-            @NotNull final String name
+            @NotNull AbstractDatabase database,
+            @NotNull String name
     ) {
         super(database, name);
     }
@@ -35,8 +35,8 @@ public final class SQLiteTableConstructor extends BaseTableConstructor {
      */
     @Override
     public AbstractTableColumn newColumn(
-            @NotNull final String name,
-            @NotNull final ColumnType columnType
+            @NotNull String name,
+            @NotNull ColumnType columnType
     ) {
         return new SQLiteTableColumn(name, columnType);
     }
@@ -62,7 +62,7 @@ public final class SQLiteTableConstructor extends BaseTableConstructor {
     public void create() {
         database.execute(this.toString());
 
-        for (final String columnName : columns) {
+        for (String columnName : columns) {
             database.execute("ALTER TABLE `" + name + "` ADD INDEX (`" + columnName + "`);");
         }
     }

@@ -22,7 +22,7 @@ public abstract class BaseTable implements AbstractTable {
      * @param database База данных, с которой работает таблица.
      */
     protected BaseTable(
-            @NotNull final AbstractDatabase database
+            @NotNull AbstractDatabase database
     ) {
         this.database = database;
     }
@@ -35,7 +35,7 @@ public abstract class BaseTable implements AbstractTable {
      */
     @Override
     public abstract AbstractTableConstructor constructor(
-            @NotNull final String name
+            @NotNull String name
     );
 
     /**
@@ -45,6 +45,6 @@ public abstract class BaseTable implements AbstractTable {
      */
     @Override
     public abstract void delete(
-            @NotNull final String name
+            @NotNull String name
     );
 }

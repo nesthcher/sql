@@ -17,7 +17,7 @@ public interface AbstractQueryWhere {
      * @param symbol Символ сравнения.
      * @param result Значение для сравнения.
      */
-    void put(@NotNull final String column, @NotNull final QuerySymbol symbol, final Object result);
+    void put(@NotNull String column, @NotNull QuerySymbol symbol, Object result);
 
     /**
      * Преобразует конструктор WHERE в SQL строку и список значений для prepared statement.
