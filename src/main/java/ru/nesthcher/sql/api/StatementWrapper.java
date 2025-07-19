@@ -59,8 +59,12 @@ public class StatementWrapper {
      * Устанавливает флаг, указывающий, выполняется ли запрос синхронно.
      * @return Текущий объект `StatementWrapper`.
      */
-    public StatementWrapper sync() {
-        sync = true;
+    public StatementWrapper sync(
+            boolean sync
+    ) {
+        this.sync = sync;
+        if(database.isActiveLogs())
+            database.getLoggerApi().log(StatementWrapper.class,"Установлена " + (sync ? "синхронного" : "асинхронного") + " формата отправки запросов");
         return this;
     }
 
