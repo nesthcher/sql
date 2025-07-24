@@ -8,7 +8,6 @@ import ru.nesthcher.sql.api.query.AbstractQuery;
 import ru.nesthcher.sql.api.table.AbstractTable;
 import ru.nesthcher.sql.implementation.query.SQLiteQuery;
 import ru.nesthcher.sql.implementation.table.SQLiteTable;
-import ru.nesthcher.utils.logger.AbstractLoggerApi;
 
 /**
  * Класс `SQLiteDatabase` реализует подключение к базе данных SQLite, используя HikariCP для управления пулом соединений.
@@ -24,11 +23,8 @@ public final class SQLiteDatabase extends HikariPoolDatabase {
      * @param path Путь к файлу базы данных SQLite.
      */
     public SQLiteDatabase(
-            @NotNull AbstractLoggerApi loggerApi,
-            boolean activeLogs,
             @NotNull String path
 	) {
-        super(loggerApi, activeLogs);
         this.path = path;
         onConnect();
     }

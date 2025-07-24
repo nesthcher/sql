@@ -10,20 +10,11 @@ import org.jetbrains.annotations.NotNull;
 import ru.nesthcher.sql.api.query.AbstractQuery;
 import ru.nesthcher.sql.api.query.constructor.Query;
 import ru.nesthcher.sql.api.table.AbstractTable;
-import ru.nesthcher.utils.logger.AbstractLoggerApi;
 
 /**
  * Интерфейс `AbstractDatabase` определяет методы для работы с базой данных.
  */
 public interface AbstractDatabase {
-    /**
-     * Объект для создания логов
-     */
-    AbstractLoggerApi getLoggerApi();
-    /**
-     * Флаг включение/выключения логирования
-     */
-    boolean isActiveLogs();
     /**
      * Пул потоков для выполнения SQL запросов асинхронно.
      */

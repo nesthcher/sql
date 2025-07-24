@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -16,20 +15,12 @@ import ru.nesthcher.sql.api.StatementWrapper;
 import ru.nesthcher.sql.api.query.AbstractQuery;
 import ru.nesthcher.sql.api.query.constructor.Query;
 import ru.nesthcher.sql.api.table.AbstractTable;
-import ru.nesthcher.utils.logger.AbstractLoggerApi;
 
 /**
  * Абстрактный класс `HikariPoolDatabase` реализует интерфейс `AbstractDatabase` и предоставляет базовую функциональность
  * для работы с базой данных, используя HikariCP для управления пулом соединений.
  */
 public abstract class HikariPoolDatabase implements AbstractDatabase {
-    /**
-     * Источник данных HikariCP.
-     */
-    @Getter
-    private final AbstractLoggerApi loggerApi;
-    @Getter
-    private final boolean activeLogs;
     /**
      * Источник данных HikariCP.
      */
@@ -46,14 +37,6 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
      * Объект для выполнения запросов.
      */
     protected AbstractQuery query;
-
-    public HikariPoolDatabase(
-            @NotNull AbstractLoggerApi loggerApi,
-            boolean activeLogs
-    ) {
-        this.loggerApi = loggerApi;
-        this.activeLogs = activeLogs;
-    }
 
     /**
      * Метод, вызываемый при подключении к базе данных.
@@ -211,7 +194,6 @@ public abstract class HikariPoolDatabase implements AbstractDatabase {
             if (isLocalConnected()) return;
             this.connection = dataSource.getConnection();
         } catch (SQLException e) {
-            getLoggerApi().log(HikariPoolDatabase.class, "Обрыв связи c базой данных");
             onConnect();
         }
     }

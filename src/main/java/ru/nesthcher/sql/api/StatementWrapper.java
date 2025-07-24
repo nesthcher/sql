@@ -63,8 +63,6 @@ public class StatementWrapper {
             boolean sync
     ) {
         this.sync = sync;
-        if(database.isActiveLogs())
-            database.getLoggerApi().log(StatementWrapper.class,"Установлена " + (sync ? "синхронного" : "асинхронного") + " формата отправки запросов");
         return this;
     }
 
@@ -94,8 +92,6 @@ public class StatementWrapper {
         if (objects == null || objects.length == 0) {
             ps.clearParameters();
         }
-        if(database.isActiveLogs())
-            database.getLoggerApi().log(StatementWrapper.class,"PreparedStatement: " + ps.toString());
         return ps;
     }
 
