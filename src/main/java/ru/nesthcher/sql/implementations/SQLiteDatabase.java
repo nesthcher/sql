@@ -1,4 +1,4 @@
-package ru.nesthcher.sql.implementation;
+package ru.nesthcher.sql.implementations;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -6,8 +6,8 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import ru.nesthcher.sql.interfaces.query.AbstractQuery;
 import ru.nesthcher.sql.interfaces.table.AbstractTable;
-import ru.nesthcher.sql.implementation.query.SQLiteQuery;
-import ru.nesthcher.sql.implementation.table.SQLiteTable;
+import ru.nesthcher.sql.implementations.query.SQLiteQuery;
+import ru.nesthcher.sql.implementations.table.SQLiteTable;
 
 /**
  * Класс `SQLiteDatabase` реализует подключение к базе данных SQLite, используя HikariCP для управления пулом соединений.

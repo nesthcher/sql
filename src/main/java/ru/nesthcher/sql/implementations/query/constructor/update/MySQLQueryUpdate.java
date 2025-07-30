@@ -1,4 +1,4 @@
-package ru.nesthcher.sql.implementation.query.constructor.update;
+package ru.nesthcher.sql.implementations.query.constructor.update;
 
 import java.util.ArrayList;
 

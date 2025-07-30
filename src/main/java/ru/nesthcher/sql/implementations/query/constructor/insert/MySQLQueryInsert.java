@@ -1,4 +1,4 @@
-package ru.nesthcher.sql.implementation.query.constructor.insert;
+package ru.nesthcher.sql.implementations.query.constructor.insert;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -10,15 +10,15 @@ import ru.nesthcher.sql.interfaces.query.constructor.insert.AbstractQueryInsert;
 import ru.nesthcher.utils.container.Pair;
 
 /**
- * Класс `SQLiteQueryInsert` представляет собой конструктор SQL запроса для вставки данных в таблицу SQLite.
+ * Класс `MySQLQueryInsert` представляет собой конструктор SQL запроса для вставки данных в таблицу MySQL.
  * Расширяет `AbstractQueryInsert` и предоставляет реализацию метода `toString` для формирования SQL запроса.
  */
-public final class SQLiteQueryInsert extends AbstractQueryInsert {
+public final class MySQLQueryInsert extends AbstractQueryInsert {
     /**
-     * Конструктор класса `SQLiteQueryInsert`.
+     * Конструктор класса `MySQLQueryInsert`.
      * @param table Название таблицы, в которую необходимо вставить данные.
      */
-    public SQLiteQueryInsert(
+    public MySQLQueryInsert(
             @NotNull String table
     ) {
         super(table);

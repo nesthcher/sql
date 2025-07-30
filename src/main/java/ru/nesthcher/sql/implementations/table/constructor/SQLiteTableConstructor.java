@@ -1,4 +1,4 @@
-package ru.nesthcher.sql.implementation.table.constructor;
+package ru.nesthcher.sql.implementations.table.constructor;
 
 import java.util.stream.Collectors;
 
@@ -8,19 +8,19 @@ import ru.nesthcher.sql.interfaces.AbstractDatabase;
 import ru.nesthcher.sql.interfaces.table.constructor.BaseTableConstructor;
 import ru.nesthcher.sql.interfaces.table.constructor.column.AbstractTableColumn;
 import ru.nesthcher.sql.interfaces.table.constructor.column.ColumnType;
-import ru.nesthcher.sql.implementation.table.constructor.column.MySQLTableColumn;
+import ru.nesthcher.sql.implementations.table.constructor.column.SQLiteTableColumn;
 
 /**
- * Класс `MySQLTableConstructor` реализует конструктор таблиц для MySQL базы данных.
- * Позволяет создавать таблицы с заданными колонками, первичными ключами и индексами.
+ * Класс `SQLiteTableConstructor` реализует конструктор таблиц для SQLite базы данных.
+ * Позволяет создавать таблицы с заданными колонками и индексами.
  */
-public final class MySQLTableConstructor extends BaseTableConstructor {
+public final class SQLiteTableConstructor extends BaseTableConstructor {
     /**
-     * Конструктор класса `MySQLTableConstructor`.
+     * Конструктор класса `SQLiteTableConstructor`.
      * @param database Абстрактная база данных, с которой будет работать конструктор.
      * @param name Название создаваемой таблицы.
      */
-    public MySQLTableConstructor(
+    public SQLiteTableConstructor(
             @NotNull AbstractDatabase database,
             @NotNull String name
     ) {
@@ -31,14 +31,14 @@ public final class MySQLTableConstructor extends BaseTableConstructor {
      * Создает новую колонку таблицы.
      * @param name Название колонки.
      * @param columnType Тип колонки.
-     * @return Объект `MySQLTableColumn`, представляющий колонку таблицы.
+     * @return Объект `SQLiteTableColumn`, представляющий колонку таблицы.
      */
     @Override
     public AbstractTableColumn newColumn(
             @NotNull String name,
             @NotNull ColumnType columnType
     ) {
-        return new MySQLTableColumn(name, columnType);
+        return new SQLiteTableColumn(name, columnType);
     }
 
     /**
@@ -50,14 +50,6 @@ public final class MySQLTableConstructor extends BaseTableConstructor {
         String columnSql = tableColumns.values().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining(", "));
-        String primary = tableColumns.values().stream()
-                .filter(AbstractTableColumn::isPrimaryKey)
-                .map(AbstractTableColumn::getName)
-                .collect(Collectors.joining(", "));
-
-        if (!primary.isEmpty()) {
-            columnSql = columnSql + ", PRIMARY KEY (" + primary + ")";
-        }
 
         return "CREATE TABLE IF NOT EXISTS `" + name + "` (" + columnSql + ");";
     }

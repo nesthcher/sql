@@ -1,4 +1,4 @@
-package ru.nesthcher.sql.implementation.query;
+package ru.nesthcher.sql.implementations.query;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -8,21 +8,21 @@ import ru.nesthcher.sql.interfaces.query.constructor.delete.AbstractQueryDelete;
 import ru.nesthcher.sql.interfaces.query.constructor.insert.AbstractQueryInsert;
 import ru.nesthcher.sql.interfaces.query.constructor.select.AbstractQuerySelect;
 import ru.nesthcher.sql.interfaces.query.constructor.update.AbstractQueryUpdate;
-import ru.nesthcher.sql.implementation.query.constructor.delete.SQLiteQueryDelete;
-import ru.nesthcher.sql.implementation.query.constructor.insert.SQLiteQueryInsert;
-import ru.nesthcher.sql.implementation.query.constructor.select.SQLiteQuerySelect;
-import ru.nesthcher.sql.implementation.query.constructor.update.SQLiteQueryUpdate;
+import ru.nesthcher.sql.implementations.query.constructor.delete.MySQLQueryDelete;
+import ru.nesthcher.sql.implementations.query.constructor.insert.MySQLQueryInsert;
+import ru.nesthcher.sql.implementations.query.constructor.select.MySQLQuerySelect;
+import ru.nesthcher.sql.implementations.query.constructor.update.MySQLQueryUpdate;
 
 /**
- * Класс `SQLiteQuery` предоставляет реализацию интерфейса `BaseQuery` для выполнения SQL запросов в базе данных SQLite.
+ * Класс `MySQLQuery` предоставляет реализацию интерфейса `BaseQuery` для выполнения SQL запросов в базе данных MySQL.
  */
-public final class SQLiteQuery extends BaseQuery {
+public final class MySQLQuery extends BaseQuery {
 
     /**
-     * Конструктор класса `SQLiteQuery`.
+     * Конструктор класса `MySQLQuery`.
      * @param database Абстрактная база данных, с которой будут выполняться запросы.
      */
-    public SQLiteQuery(
+    public MySQLQuery(
             @NotNull AbstractDatabase database
     ) {
         super(database);
@@ -31,48 +31,48 @@ public final class SQLiteQuery extends BaseQuery {
     /**
      * Создает конструктор запроса на удаление данных из таблицы.
      * @param table Название таблицы, из которой будут удалены данные.
-     * @return Конструктор запроса на удаление `SQLiteQueryDelete`.
+     * @return Конструктор запроса на удаление `MySQLQueryDelete`.
      */
     @Override
     public AbstractQueryDelete delete(
             @NotNull String table
     ) {
-        return new SQLiteQueryDelete(table);
+        return new MySQLQueryDelete(table);
     }
 
     /**
      * Создает конструктор запроса на вставку данных в таблицу.
      * @param table Название таблицы, в которую будут вставлены данные.
-     * @return Конструктор запроса на вставку `SQLiteQueryInsert`.
+     * @return Конструктор запроса на вставку `MySQLQueryInsert`.
      */
     @Override
     public AbstractQueryInsert insert(
             @NotNull String table
     ) {
-        return new SQLiteQueryInsert(table);
+        return new MySQLQueryInsert(table);
     }
 
     /**
      * Создает конструктор запроса на выборку данных из таблицы.
      * @param table Название таблицы, из которой будут выбраны данные.
-     * @return Конструктор запроса на выборку `SQLiteQuerySelect`.
+     * @return Конструктор запроса на выборку `MySQLQuerySelect`.
      */
     @Override
     public AbstractQuerySelect select(
             @NotNull String table
     ) {
-        return new SQLiteQuerySelect(table);
+        return new MySQLQuerySelect(table);
     }
 
     /**
      * Создает конструктор запроса на обновление данных в таблице.
      * @param table Название таблицы, в которой будут обновлены данные.
-     * @return Конструктор запроса на обновление `SQLiteQueryUpdate`.
+     * @return Конструктор запроса на обновление `MySQLQueryUpdate`.
      */
     @Override
     public AbstractQueryUpdate update(
             @NotNull String table
     ) {
-        return new SQLiteQueryUpdate(table);
+        return new MySQLQueryUpdate(table);
     }
 }

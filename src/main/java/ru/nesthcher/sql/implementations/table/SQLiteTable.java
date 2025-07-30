@@ -1,36 +1,36 @@
-package ru.nesthcher.sql.implementation.table;
+package ru.nesthcher.sql.implementations.table;
 
 import org.jetbrains.annotations.NotNull;
 
 import ru.nesthcher.sql.interfaces.AbstractDatabase;
 import ru.nesthcher.sql.interfaces.table.BaseTable;
 import ru.nesthcher.sql.interfaces.table.constructor.AbstractTableConstructor;
-import ru.nesthcher.sql.implementation.table.constructor.MySQLTableConstructor;
+import ru.nesthcher.sql.implementations.table.constructor.SQLiteTableConstructor;
 
 /**
- * Класс `MySQLTable` реализует интерфейс `BaseTable` для работы с таблицами в MySQL базе данных.
+ * Класс `SQLiteTable` реализует интерфейс `BaseTable` для работы с таблицами в SQLite базе данных.
  */
-public final class MySQLTable extends BaseTable {
+public final class SQLiteTable extends BaseTable {
     /**
-     * Конструктор класса `MySQLTable`.
+     * Конструктор класса `SQLiteTable`.
      * @param database Абстрактная база данных, с которой будет работать таблица.
      */
-    public MySQLTable(
+    public SQLiteTable(
             @NotNull AbstractDatabase database
     ) {
         super(database);
     }
 
     /**
-     * Создает конструктор таблицы `MySQLTableConstructor`.
+     * Создает конструктор таблицы `SQLiteTableConstructor`.
      * @param tableName Название таблицы.
-     * @return Конструктор таблицы `MySQLTableConstructor`.
+     * @return Конструктор таблицы `SQLiteTableConstructor`.
      */
     @Override
     public AbstractTableConstructor constructor(
             @NotNull String tableName
     ) {
-        return new MySQLTableConstructor(database, tableName);
+        return new SQLiteTableConstructor(database, tableName);
     }
 
     /**

@@ -1,4 +1,4 @@
-package ru.nesthcher.sql.implementation.table.constructor.column;
+package ru.nesthcher.sql.implementations.table.constructor.column;
 
 import org.jetbrains.annotations.NotNull;
 

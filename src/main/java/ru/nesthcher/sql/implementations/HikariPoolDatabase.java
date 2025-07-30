@@ -1,4 +1,4 @@
-package ru.nesthcher.sql.implementation;
+package ru.nesthcher.sql.implementations;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

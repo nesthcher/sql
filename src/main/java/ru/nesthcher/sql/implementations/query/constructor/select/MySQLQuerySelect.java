@@ -1,4 +1,4 @@
-package ru.nesthcher.sql.implementation.query.constructor.select;
+package ru.nesthcher.sql.implementations.query.constructor.select;
 
 import java.util.ArrayList;
 
@@ -8,15 +8,15 @@ import ru.nesthcher.sql.interfaces.query.constructor.select.AbstractQuerySelect;
 import ru.nesthcher.utils.container.Pair;
 
 /**
- * Класс `SQLiteQuerySelect` представляет собой конструктор SQL запроса для выборки данных из таблицы SQLite.
+ * Класс `MySQLQuerySelect` представляет собой конструктор SQL запроса для выборки данных из таблицы MySQL.
  * Расширяет `AbstractQuerySelect` и предоставляет реализацию метода `toString` для формирования SQL запроса.
  */
-public final class SQLiteQuerySelect extends AbstractQuerySelect {
+public final class MySQLQuerySelect extends AbstractQuerySelect {
     /**
-     * Конструктор класса `SQLiteQuerySelect`.
+     * Конструктор класса `MySQLQuerySelect`.
      * @param table Название таблицы, из которой необходимо выбрать данные.
      */
-    public SQLiteQuerySelect(
+    public MySQLQuerySelect(
             @NotNull String table
     ) {
         super(table);

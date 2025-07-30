@@ -1,4 +1,4 @@
-package ru.nesthcher.sql.implementation.query.constructor.delete;
+package ru.nesthcher.sql.implementations.query.constructor.delete;
 
 import java.util.ArrayList;
 
