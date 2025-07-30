@@ -6,7 +6,7 @@
 
     <groupId>ru.nesthcher</groupId>
     <artifactId>sql</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Библиотека для работы с SQL, которая упрощает создание таблиц и запросов с поддержкой различных СУБД</description>

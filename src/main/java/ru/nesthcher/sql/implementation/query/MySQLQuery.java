@@ -2,12 +2,12 @@ package ru.nesthcher.sql.implementation.query;
 
 import org.jetbrains.annotations.NotNull;
 
-import ru.nesthcher.sql.api.AbstractDatabase;
-import ru.nesthcher.sql.api.query.BaseQuery;
-import ru.nesthcher.sql.api.query.constructor.delete.AbstractQueryDelete;
-import ru.nesthcher.sql.api.query.constructor.insert.AbstractQueryInsert;
-import ru.nesthcher.sql.api.query.constructor.select.AbstractQuerySelect;
-import ru.nesthcher.sql.api.query.constructor.update.AbstractQueryUpdate;
+import ru.nesthcher.sql.interfaces.AbstractDatabase;
+import ru.nesthcher.sql.interfaces.query.BaseQuery;
+import ru.nesthcher.sql.interfaces.query.constructor.delete.AbstractQueryDelete;
+import ru.nesthcher.sql.interfaces.query.constructor.insert.AbstractQueryInsert;
+import ru.nesthcher.sql.interfaces.query.constructor.select.AbstractQuerySelect;
+import ru.nesthcher.sql.interfaces.query.constructor.update.AbstractQueryUpdate;
 import ru.nesthcher.sql.implementation.query.constructor.delete.MySQLQueryDelete;
 import ru.nesthcher.sql.implementation.query.constructor.insert.MySQLQueryInsert;
 import ru.nesthcher.sql.implementation.query.constructor.select.MySQLQuerySelect;

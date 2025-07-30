@@ -4,8 +4,8 @@ import org.jetbrains.annotations.NotNull;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import ru.nesthcher.sql.api.query.AbstractQuery;
-import ru.nesthcher.sql.api.table.AbstractTable;
+import ru.nesthcher.sql.interfaces.query.AbstractQuery;
+import ru.nesthcher.sql.interfaces.table.AbstractTable;
 import ru.nesthcher.sql.implementation.query.SQLiteQuery;
 import ru.nesthcher.sql.implementation.table.SQLiteTable;
 

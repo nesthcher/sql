@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
-import ru.nesthcher.sql.api.query.constructor.delete.AbstractQueryDelete;
+import ru.nesthcher.sql.interfaces.query.constructor.delete.AbstractQueryDelete;
 import ru.nesthcher.utils.container.Pair;
 
 /**

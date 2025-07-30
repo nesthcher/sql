@@ -2,9 +2,9 @@ package ru.nesthcher.sql.implementation.table;
 
 import org.jetbrains.annotations.NotNull;
 
-import ru.nesthcher.sql.api.AbstractDatabase;
-import ru.nesthcher.sql.api.table.BaseTable;
-import ru.nesthcher.sql.api.table.constructor.AbstractTableConstructor;
+import ru.nesthcher.sql.interfaces.AbstractDatabase;
+import ru.nesthcher.sql.interfaces.table.BaseTable;
+import ru.nesthcher.sql.interfaces.table.constructor.AbstractTableConstructor;
 import ru.nesthcher.sql.implementation.table.constructor.MySQLTableConstructor;
 
 /**

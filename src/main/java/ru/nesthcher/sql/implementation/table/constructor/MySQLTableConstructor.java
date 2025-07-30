@@ -4,10 +4,10 @@ import java.util.stream.Collectors;
 
 import org.jetbrains.annotations.NotNull;
 
-import ru.nesthcher.sql.api.AbstractDatabase;
-import ru.nesthcher.sql.api.table.constructor.BaseTableConstructor;
-import ru.nesthcher.sql.api.table.constructor.column.AbstractTableColumn;
-import ru.nesthcher.sql.api.table.constructor.column.ColumnType;
+import ru.nesthcher.sql.interfaces.AbstractDatabase;
+import ru.nesthcher.sql.interfaces.table.constructor.BaseTableConstructor;
+import ru.nesthcher.sql.interfaces.table.constructor.column.AbstractTableColumn;
+import ru.nesthcher.sql.interfaces.table.constructor.column.ColumnType;
 import ru.nesthcher.sql.implementation.table.constructor.column.MySQLTableColumn;
 
 /**

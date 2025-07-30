@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 import org.jetbrains.annotations.NotNull;
 
-import ru.nesthcher.sql.api.query.QueryUtil;
-import ru.nesthcher.sql.api.query.constructor.insert.AbstractQueryInsert;
+import ru.nesthcher.sql.interfaces.query.QueryUtil;
+import ru.nesthcher.sql.interfaces.query.constructor.insert.AbstractQueryInsert;
 import ru.nesthcher.utils.container.Pair;
 
 /**

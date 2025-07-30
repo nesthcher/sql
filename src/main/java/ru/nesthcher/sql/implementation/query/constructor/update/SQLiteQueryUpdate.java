@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
-import ru.nesthcher.sql.api.query.QueryUtil;
-import ru.nesthcher.sql.api.query.constructor.update.AbstractQueryUpdate;
+import ru.nesthcher.sql.interfaces.query.QueryUtil;
+import ru.nesthcher.sql.interfaces.query.constructor.update.AbstractQueryUpdate;
 import ru.nesthcher.utils.container.Pair;
 
 /**

@@ -2,8 +2,8 @@ package ru.nesthcher.sql.implementation.table.constructor.column;
 
 import org.jetbrains.annotations.NotNull;
 
-import ru.nesthcher.sql.api.table.constructor.column.BaseTableColumn;
-import ru.nesthcher.sql.api.table.constructor.column.ColumnType;
+import ru.nesthcher.sql.interfaces.table.constructor.column.BaseTableColumn;
+import ru.nesthcher.sql.interfaces.table.constructor.column.ColumnType;
 
 /**
  * Класс `SQLiteTableColumn` представляет колонку таблицы для SQLite базы данных.

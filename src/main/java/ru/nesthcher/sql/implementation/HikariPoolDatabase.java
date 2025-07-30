@@ -9,12 +9,12 @@ import org.jetbrains.annotations.NotNull;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import ru.nesthcher.sql.api.AbstractDatabase;
-import ru.nesthcher.sql.api.ResponseHandler;
-import ru.nesthcher.sql.api.StatementWrapper;
-import ru.nesthcher.sql.api.query.AbstractQuery;
-import ru.nesthcher.sql.api.query.constructor.Query;
-import ru.nesthcher.sql.api.table.AbstractTable;
+import ru.nesthcher.sql.interfaces.AbstractDatabase;
+import ru.nesthcher.sql.interfaces.ResponseHandler;
+import ru.nesthcher.sql.interfaces.StatementWrapper;
+import ru.nesthcher.sql.interfaces.query.AbstractQuery;
+import ru.nesthcher.sql.interfaces.query.constructor.Query;
+import ru.nesthcher.sql.interfaces.table.AbstractTable;
 
 /**
  * Абстрактный класс `HikariPoolDatabase` реализует интерфейс `AbstractDatabase` и предоставляет базовую функциональность
