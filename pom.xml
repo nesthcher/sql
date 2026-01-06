@@ -6,7 +6,7 @@
 
     <groupId>ru.nesthcher</groupId>
     <artifactId>sql</artifactId>
-    <version>1.0.11</version>
+    <version>1.0.12</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Библиотека для работы с SQL, которая упрощает создание таблиц и запросов с поддержкой различных СУБД</description>
@@ -22,7 +22,7 @@
     <developers>
         <developer>
             <name>Yurin Yaroslav (nesthcher)</name>
-            <email>me@yurinyaroslav.ru</email>
+            <email>nesthcher@yandex.ru</email>
         </developer>
     </developers>
 
@@ -77,13 +77,13 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.38</version>
+            <version>1.18.42</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>6.3.0</version>
+            <version>7.0.2</version>
         </dependency>
         <dependency>
             <groupId>ru.nesthcher</groupId>
